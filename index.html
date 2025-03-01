@@ -39,9 +39,45 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+<!-- slider scripts-->
+  <script
+          defer
+          src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"
+  ></script>
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
+  />
+
+  <!-- swiper -->
+  <!-- https://swiperjs.com/demos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+  <!-- img comparison slider -->
+  <!-- https://github.com/sneas/img-comparison-slider -->
+
+
 </head>
 <body>
 
+<style>
+  .container_teaser {
+    display: flex; /* Enables Flexbox */
+    justify-content: center; /* Horizontally centers the content */
+    align-items: center; /* Vertically centers the content */
+    height: 100%; /* Set the height of the container */
+  }
+
+  .column_teaser {
+    flex: 0 0 auto; /* This ensures that the column doesn't grow or shrink */
+    width: 100%; /* Adjust this width as needed */
+    max-width: 500px; /* Adjust this max-width as needed */
+    margin: 0 auto; /* Centers the column within the container */
+  }
+</style>
 
 <section class="hero">
   <div class="hero-body">
@@ -91,7 +127,7 @@
             <span class="author-block"><sup>5</sup>DEVCOM ARL</span>
           </div>
           <p class="is-size-6">*Co-first authors</p>
-
+          <p class="is-size-5" style="color: rgb(169, 16, 151); --darkreader-inline-color: var(--darkreader-text-a91097, #ef5ade);">CVPR 2025</p>
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
@@ -153,16 +189,13 @@
 
 
 
-
-
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img
-              src="./media/teaser/fig1_teaser.jpg"
-              alt="Teaser Image"
-              style="max-width: 100%; width: auto; height: auto; display: block;"
-      >
+      <video controls poster="./media/teaser/fig1_teaser.jpg" style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;">
+        <source src="./media/demo.mp4" type="video/mp4">
+        Demo Video
+      </video>
       <h2 class="subtitle has-text-centered" style="font-size: 14px;">
         We introduce a universal framework designed to extend any functionality from 2D vision foundation model into 4D realm, using only monocular video input, opening the door to a brand new semantic, editable, and promptable explicit 4D scene representation with agentic AI.
       </h2>
@@ -265,13 +298,12 @@
   <div class="container is-max-desktop" >
     <!--    Method -->
     <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3">Method</h2>
-
-
+      <h2 class="title is-3">Overview</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
         We build upon MoSca and infer 2D priors on the input monocular video to separate the scene into static background and dynamic foreground elements. The static background is represented by a set of static 3D Gaussians (GS) with latent features, while the dynamic foreground is modeled with dynamic 3D Gaussians guided by Motion Scaffolds, a set of nodes {<i>v<sub>i</sub></i>} representing 3D motion trajectories over time and base latent features <i>h<sub>i</sub></i>. We compute the motion and latent features of dynamic 3D Gaussians by interpolating their <i>K</i>-Nearest Scaffold nodes. Given a target timestep <i>t</i>, we warp dynamic Gaussians from different timesteps based on their motions, fuse them with static Gaussians, and rasterize their colors and latent features into an RGB image and a <i>D</i>-dimensional feature map, respectively. The feature map is then fed into task-dependent decoders <i>&#120097;<sub>s</sub></i> to support tasks such as 2D semantic segmentation (SAM), 3D editing (CLIP-LSeg), and 4D query-based reasoning (InternVideo2).
       </p>
+      <br>
       <img
               src="./media/pipeline/fig2_pipeline_v1.jpg"
               alt="Method Pipeline"
@@ -282,119 +314,85 @@
   </div>
 </section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop" >
+    <!--    Method -->
+    <div class="hero-body" style="text-align: center;">
+      <h2 class="title is-3">Novel view segmentation (SAM2) results</h2>
+      <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
+      <p style="text-align: justify;">
+        Overview of the 4D SAM-based mask assignment and propagation across a dynamic scene. (Left) A 4D scene representation and corresponding 4D SAM feature field. (Right) (a) Mask assignment demonstrates the segmentation of various scene elements, including buildings, roads, and vehicles, at time t=0 (b) Mask propagation across subsequent time frames (from t=10 to t=30 ) illustrates how the assigned masks are consistently tracked and updated as objects move through the scene, enabling accurate temporal correspondence. This approach ensures robust segmentation and tracking in dynamic 4D environments.
+      </p>
+      <br>
+      <img
+              src="./media/paper_results/sam_seg_results.jpg"
+              alt="Method Pipeline"
+              style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+      >
 
+    </div>
+  </div>
+</section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop" >
+    <!--    Method -->
+    <div class="hero-body" style="text-align: center;">
+      <h2 class="title is-3">Novel view segmentation (CLIP) results</h2>
+      <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
+      <p style="text-align: justify;">
+        Visualization of semantic understanding and view synthesis in a 4D scene with a flower pot. (Top left) The 4D scene captures the object and its environment. (Top right) Novel views generated by the model demonstrate realistic perspective shifts of the flower pot. (Bottom left) The 4D CLIP feature field representation encodes semantic information about the scene. (Bottom right) Semantic masks show the segmentation of the flower pot, wall, window, and curtain over time (t=10,55,95), demonstrating consistent semantic labeling and tracking across frames. This approach enables robust 4D scene understanding and segmentation.
+      </p>
+      <br>
+      <img
+              src="./media/paper_results/clip_seg_results.jpg"
+              alt="Method Pipeline"
+              style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+      >
 
+    </div>
+  </div>
+</section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop" >
+    <!--    Method -->
+    <div class="hero-body" style="text-align: center;">
+      <h2 class="title is-3">Language-guided 4D scene editing results</h2>
+      <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
+      <p style="text-align: justify;">
+        Language-guided 4D scene editing results. Demonstration of high-level object-specific manipulations using natural language prompts. (Top Row) One time frame of novel view angle generated by the model. (Bottom Row) Same frame of the entire reconstructed 4D scene. (Left) "Extract the swan," where the swan is isolated from its background. (Center) ”Delete the camel,” results in the removal of the camel from the scene and reconstruction of the background. (Right) ”Change the cow color to black and white” modifies the cow’s color to grayscale.
+      </p>
+      <br>
+      <img
+              src="./media/paper_results/editing_results.jpg"
+              alt="Method Pipeline"
+              style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+      >
 
-<!--<section class="section">-->
-<!--  <div class="container is-max-desktop">-->
+    </div>
+  </div>
+</section>
 
-<!--    <div class="columns is-centered">-->
+<section class="hero teaser">
+  <div class="container is-max-desktop" >
+    <!--    Method -->
+    <div class="hero-body" style="text-align: center;">
+      <h2 class="title is-3">Novel view synthesis</h2>
+      <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
+      <p style="text-align: justify;">
+        Q & A Illustration of local and global novel view synthesis from an input video frame. (Top Left) Original input frame, featuring a dog on a window ledge. (Top Center, Right) Local novel view and its corresponding feature representation, capturing fine details and localized perspective shifts. (Bottom) global novel view and its feature representation, showing the full scene’s spatial context and structure.
+      </p>
+      <br>
+      <img
+              src="./media/paper_results/novel_view.jpg"
+              alt="Method Pipeline"
+              style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+      >
 
-<!--      &lt;!&ndash; Visual Effects. &ndash;&gt;-->
-<!--      <div class="column">-->
-<!--        <div class="content">-->
-<!--          <h2 class="title is-3">Visual Effects</h2>-->
-<!--          <p>-->
-<!--            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect-->
-<!--            would be impossible without nerfies since it would require going through a wall.-->
-<!--          </p>-->
-<!--          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/dollyzoom-stacked.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash;/ Visual Effects. &ndash;&gt;-->
-
-<!--      &lt;!&ndash; Matting. &ndash;&gt;-->
-<!--      <div class="column">-->
-<!--        <h2 class="title is-3">Matting</h2>-->
-<!--        <div class="columns is-centered">-->
-<!--          <div class="column content">-->
-<!--            <p>-->
-<!--              As a byproduct of our method, we can also solve the matting problem by ignoring-->
-<!--              samples that fall outside of a bounding box during rendering.-->
-<!--            </p>-->
-<!--            <video id="matting-video" controls playsinline height="100%">-->
-<!--              <source src="./static/videos/matting.mp4"-->
-<!--                      type="video/mp4">-->
-<!--            </video>-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;/ Matting. &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Animation. &ndash;&gt;-->
-<!--    <div class="columns is-centered">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3">Animation</h2>-->
-
-<!--        &lt;!&ndash; Interpolating. &ndash;&gt;-->
-<!--        <h3 class="title is-4">Interpolating states</h3>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            We can also animate the scene by interpolating the deformation latent codes of two input-->
-<!--            frames. Use the slider here to linearly interpolate between the left frame and the right-->
-<!--            frame.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div class="columns is-vcentered interpolation-panel">-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="./static/images/interpolate_start.jpg"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolate start reference image."/>-->
-<!--            <p>Start Frame</p>-->
-<!--          </div>-->
-<!--          <div class="column interpolation-video-column">-->
-<!--            <div id="interpolation-image-wrapper">-->
-<!--              Loading...-->
-<!--            </div>-->
-<!--            <input class="slider is-fullwidth is-large is-info"-->
-<!--                   id="interpolation-slider"-->
-<!--                   step="1" min="0" max="100" value="0" type="range">-->
-<!--          </div>-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="./static/images/interpolate_end.jpg"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolation end reference image."/>-->
-<!--            <p class="is-bold">End Frame</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
-
-<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
-<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel-->
-<!--            viewpoint such as a stabilized camera by playing back the training deformations.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div class="content has-text-centered">-->
-<!--          <video id="replay-video"-->
-<!--                 controls-->
-<!--                 muted-->
-<!--                 preload-->
-<!--                 playsinline-->
-<!--                 width="75%">-->
-<!--            <source src="./static/videos/replay.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;/ Animation. &ndash;&gt;-->
-
-<!--  </div>-->
-<!--</section>-->
-
+    </div>
+  </div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -412,7 +410,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -432,6 +430,73 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function toggleSliders() {
+    // Get both slider containers
+    var slider1 = document.getElementById("slider1-container_teaser");
+    var slider2 = document.getElementById("slider2-container_teaser");
+    var slider3 = document.getElementById("slider3-container_teaser");
+
+    // Toggle visibility
+    // if (slider1.style.display === "none") {
+    //   slider1.style.display = "block";
+    //   slider2.style.display = "none";
+    // } else {
+    //   slider1.style.display = "none";
+    //   slider2.style.display = "block";
+    // }
+    if (slider1.style.display === "block") {
+      slider1.style.display = "none";
+      slider2.style.display = "block";
+    } else if (slider2.style.display === "block") {
+      slider2.style.display = "none";
+      slider3.style.display = "block";
+    } else {
+      slider3.style.display = "none";
+      slider1.style.display = "block";
+    }
+
+
+  }
+</script>
+
+<script>
+  const promptSelect = document.getElementById('promptSelect');
+  // const editButton = document.getElementById('editButton');
+  // const resultVideo = document.getElementById('resultVideo');
+
+  // Set the default video path
+  // const videoPath = 'data/video.mp4';
+
+  // Mock logic for editing the video based on prompt
+  function getResultVideoUrl(prompt) {
+    // Simulate result video based on selected prompt
+    if (prompt === 'delete_dog') {
+      return 'media/supplement_videos/italian_pup/language_editing/geometric_deletion_local.mp4'; // Replace with actual path to the video with the dog deleted
+    } else if (prompt === 'change_color') {
+      return 'media/supplement_videos/italian_pup/language_editing/appearance_clifford_local.mp4'; // Replace with actual path to the video with dog's color changed
+    } else if (prompt === 'extract_dog') {
+      return 'media/supplement_videos/italian_pup/language_editing/geometric_extraction_local.mp4'; // Replace with actual path to the video with dog's color changed
+    }
+
+    return null;
+  }
+
+  // Enable/Disable the edit button based on prompt selection
+  promptSelect.addEventListener('change', () => {
+    const prompt = promptSelect.value;
+    const videoUrl = getResultVideoUrl(prompt);
+    if (videoUrl) {
+      resultVideo.src = videoUrl;
+      resultVideo.style.display = 'block';
+    } else {
+      alert('Sorry, no matching edit for this prompt.');
+    }
+  });
+
+
+</script>
 
 </body>
 </html>
