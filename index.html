@@ -1344,22 +1344,6 @@
     font-size: 0.9rem;
     color: #333;
   }
-  
-  @media screen and (min-width: 769px) {
-    pre::before {
-      content: "BibTeX";
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      padding: 0.3rem 1rem;
-      font-size: 0.8rem;
-      border-radius: 0 8px 0 8px;
-    }
-  }
-
-  /* Desktop beautification */
   @media (min-width: 769px) {
     .content-card {
       padding: 2rem;
@@ -1891,20 +1875,18 @@
 <section class="section feature-section" id="BibTeX" style="padding: 2rem 1.5rem;">
   <span class="section-anchor" id="bibtex"></span>
   <div class="container is-max-desktop content">
-    <div class="has-text-centered">
-      <h2 class="title section-title">
-        <span class="section-title-decoration">✦</span>
-        BibTeX
-        <span class="section-title-decoration">✦</span>
-      </h2>
-    </div>
-    <div class="content-card">
-      <pre style="margin-bottom: 0;"><code>@article{zhou2025feature4x,
-        author= {Shijie Zhou and Hui Ren and Yijia Weng and Shuwang Zhang and Zhen Wang and Dejia Xu and Zhiwen Fan and Suya You and Zhangyang Wang and Leonidas Guibas and Achuta Kadambi},
-        title = {Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields},
-        year  = {2025},
-      }
-</code></pre>
+    <div class="content-card" style="position: relative; padding: 0; overflow: hidden; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1)); padding: 12px 15px; border-bottom: 1px solid rgba(106, 17, 203, 0.15);">
+        <h3 style="margin: 0; color: #333; font-weight: 600; font-size: 1.2rem;">BibTeX</h3>
+        <button id="copy-bibtex" class="copy-button" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; border-radius: 4px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <pre style="margin: 0; padding: 1.5rem; background-color: white;"><code id="bibtex-content">@article{zhou2025feature4x,
+  author= {Shijie Zhou and Hui Ren and Yijia Weng and Shuwang Zhang and Zhen Wang and Dejia Xu and Zhiwen Fan and Suya You and Zhangyang Wang and Leonidas Guibas and Achuta Kadambi},
+  title = {Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields},
+  year  = {2025},
+}</code></pre>
     </div>
   </div>
 </section>
@@ -2349,9 +2331,66 @@
     // 页面加载和滚动时更新激活状态
     setActiveNavItem();
     window.addEventListener('scroll', setActiveNavItem);
+    
+    // 复制BibTeX功能
+    const copyBibtexBtn = document.getElementById('copy-bibtex');
+    if (copyBibtexBtn) {
+      copyBibtexBtn.addEventListener('click', function() {
+        const bibtexContent = document.getElementById('bibtex-content').textContent;
+        navigator.clipboard.writeText(bibtexContent).then(function() {
+          // 变更按钮文本
+          const originalText = copyBibtexBtn.innerHTML;
+          copyBibtexBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          
+          // 添加效果
+          copyBibtexBtn.style.background = "linear-gradient(135deg, #00b09b, #96c93d)";
+          
+          // 2秒后恢复原样
+          setTimeout(function() {
+            copyBibtexBtn.innerHTML = originalText;
+            copyBibtexBtn.style.background = "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)";
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Could not copy text: ', err);
+          // 复制失败
+          copyBibtexBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
+          copyBibtexBtn.style.background = "linear-gradient(135deg, #ff416c, #ff4b2b)";
+          
+          // 2秒后恢复原样
+          setTimeout(function() {
+            copyBibtexBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            copyBibtexBtn.style.background = "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)";
+          }, 2000);
+        });
+      });
+      
+      // 给复制按钮添加悬停效果
+      copyBibtexBtn.addEventListener('mouseover', function() {
+        this.style.transform = "translateY(-2px)";
+        this.style.boxShadow = "0 4px 10px rgba(106, 17, 203, 0.3)";
+      });
+      
+      copyBibtexBtn.addEventListener('mouseout', function() {
+        this.style.transform = "translateY(0)";
+        this.style.boxShadow = "none";
+      });
+    }
   });
   
-  </script>
+  // 添加鼠标悬停效果
+  document.getElementById("scroll-to-top").addEventListener("mouseout", function() {
+    this.style.transform = "translateY(0)";
+    this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+  });
+  
+  // 阅读进度更新
+  function updateReadingProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.scrollY / documentHeight * 100;
+    document.getElementById("reading-progress").style.width = scrolled + "%";
+  }
+</script>
 
 <script>
   function toggleSliders() {
