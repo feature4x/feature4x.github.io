@@ -193,162 +193,16 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video controls poster="./media/teaser/fig1_teaser.jpg" style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;">
+      <video controls poster="./media/figs/fig1_feature4x.jpg" style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;">
         <source src="./media/demo.mp4" type="video/mp4">
         Demo Video
       </video>
       <h2 class="subtitle has-text-centered" style="font-size: 14px;">
-        We introduce a universal framework designed to extend any functionality from 2D vision foundation model into 4D realm, using only monocular video input, opening the door to a brand new semantic, editable, and promptable explicit 4D scene representation with agentic AI.
+        Feature4X: Building 4D Interactive Scenes with Agentic AI from Monocular Videos. By dynamically distilling modelconditioned features and integrating 2D foundation models with LLMs in feedback loops, Feature4X enables multimodal tasks across 2D, 3D, and 4D with high-level language inputs or direct user interactions, including (but not limited to) segmentation, scene editing, and VQA across novel views and all time steps, unlocking new possibilities for 4D agentic AI.
       </h2>
     </div>
   </div>
 </section>
-
-
-<!--<section class="hero teaser">-->
-<!--  <div class="container_teaser is-max-desktop">-->
-<!--    <div class="column_teaser" style="margin-right: 0;">-->
-<!--      &lt;!&ndash; First Slider &ndash;&gt;-->
-<!--      <div id="slider1-container_teaser">-->
-<!--        <img-comparison-slider id="slider1">-->
-<!--          <figure slot="first" class="before">-->
-<!--            <img src="./media/teaser/novel_rgb_local1.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Radiance Field </figcaption>-->
-<!--          </figure>-->
-<!--          <figure slot="second" class="after">-->
-<!--            <img src="./media/teaser/novel_fmap_clip_local_1.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Distilled Feature Field (LSeg)</figcaption>-->
-<!--          </figure>-->
-<!--        </img-comparison-slider>-->
-<!--      </div>-->
-
-<!--      &lt;!&ndash; Second Slider, initially hidden &ndash;&gt;-->
-<!--      <div id="slider2-container_teaser" style="display: none;">-->
-<!--        <img-comparison-slider id="slider2">-->
-<!--          <figure slot="first" class="before">-->
-<!--            <img src="./media/teaser/novel_rgb_local2.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Radiance Field </figcaption>-->
-<!--          </figure>-->
-<!--          <figure slot="second" class="after">-->
-<!--            <img src="./media/teaser/novel_fmap_sam2_local_1.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Distilled Feature Field (SAM)</figcaption>-->
-<!--          </figure>-->
-<!--        </img-comparison-slider>-->
-<!--      </div>-->
-<!--      &lt;!&ndash;     Third slider &ndash;&gt;-->
-<!--      <div id="slider3-container_teaser" style="display: none;">-->
-<!--        <img-comparison-slider id="slider3">-->
-<!--          <figure slot="first" class="before">-->
-<!--            <img src="./media/teaser/novel_rgb_local3.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Radiance Field </figcaption>-->
-<!--          </figure>-->
-<!--          <figure slot="second" class="after" >-->
-<!--            <img src="./media/teaser/novel_fmap_internvideo_local.gif"-->
-<!--                 style="margin: 0 auto;max-width: 100%; width: auto; height: auto; display: block;"-->
-<!--            >-->
-<!--            <figcaption>Distilled Feature Field (Internvideo)</figcaption>-->
-<!--          </figure>-->
-<!--        </img-comparison-slider>-->
-<!--      </div>-->
-
-<!--      <div class="button-container_teaser">-->
-<!--        <div class="glow-button" style="display: flex; justify-content: center;">-->
-<!--          <button id="toggle-slider" onclick="toggleSliders()">Switch Feature Field 🪄</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--&lt;!&ndash;      <h2 class="subtitle has-text-centered">&ndash;&gt;-->
-<!--&lt;!&ndash;        Feature 3DGS distills 3D feature fields from any 2D foundation models, opening the door to a brand new semantic, editable, and promptable explicit 3D scene representation.&ndash;&gt;-->
-<!--&lt;!&ndash;      </h2>&ndash;&gt;-->
-<!--    </div>-->
-
-<!--    <div class="column_teaser" style="margin-left: 0;">-->
-
-<!--      <video id="resultVideo" autoplay muted loop style="max-width: 100%; width: auto; height: auto; display: block;">-->
-<!--        <source src="media/supplement_videos/italian_pup/language_editing/appearance_clifford_local.mp4" type="video/mp4" >-->
-
-<!--      </video>-->
-
-<!--      <select id="promptSelect" title="Select a option" style="margin-top: 5px;display: block; margin-left: auto; margin-right: auto;">-->
-<!--        &lt;!&ndash;        <option value="" disabled selected>Select an option</option>&ndash;&gt;-->
-<!--        <option value="change_color">Make the dog's color look like Clifford</option>-->
-<!--        <option value="delete_dog">Delete the dog</option>-->
-<!--        <option value="extract_dog">Extract the dog</option>-->
-<!--        &lt;!&ndash; Add more options if needed &ndash;&gt;-->
-<!--      </select>-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-
-<!--<section class="hero is-light is-small">-->
-<!--  <div class="hero-body">-->
-<!--    <div class="container">-->
-<!--      <div id="results-carousel" class="carousel results-carousel">-->
-<!--        <div class="item item-steve">-->
-<!--          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/steve.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-chair-tp">-->
-<!--          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/chair-tp.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-shiba">-->
-<!--          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/shiba.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-fullbody">-->
-<!--          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/fullbody.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-blueshirt">-->
-<!--          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/blueshirt.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-mask">-->
-<!--          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/mask.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-coffee">-->
-<!--          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/coffee.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        <div class="item item-toby">-->
-<!--          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">-->
-<!--            <source src="./static/videos/toby2.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -358,7 +212,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recent advancements in 2D and multi-modal models have achieved remarkable success by leveraging large-scale training on extensive datasets. However, extending these achievements to enable free-form interactions and high-level semantic operations with complex 3D/4D scenes remains challenging. This difficulty stems from the limited availability of large-scale, annotated 3D/4D or multi-view datasets, which are crucial for generalizable vision and language tasks such as open-vocabulary and prompt-based segmentation, language-guided editing, and visual question answering (VQA). In this paper, we introduce Feature4X, a universal framework designed to extend any functionality from 2D vision foundation model into 4D realm, using only monocular video input, which is widely available from user-generated content. The "X" in Feature4X represents its versatility, enabling any task through adaptable, model-conditioned 4D feature field distillation. At the core of our framework is a dynamic optimization strategy that unifies multiple model capabilities into a single, task-dependent representation. Additionally, to the best of our knowledge, we are the first method to distill and lift the video foundation models (e.g. SAM2, InternVideo2) features into an explicit 4D feature field using Gaussian Splatting. Our experiments showcase novel view segment anything, geometric and appearance scene editing, and free-form VQA across all time steps, empowered by LLMs in feedback loops. These advancements broaden the scope of agentic AI applications by providing a foundation for scalable, contextually and spatiotemporally aware systems capable of immersive dynamic 4D scene interaction.
+            Recent advancements in 2D and multimodal models have achieved remarkable success by leveraging large-scale training on extensive datasets. However, extending these achievements to enable free-form interactions and high-level semantic operations with complex 3D/4D scenes remains challenging. This difficulty stems from the limited availability of large-scale, annotated 3D/4D or multi-view datasets, which are crucial for generalizable vision and language tasks such as open-vocabulary and prompt-based segmentation, language-guided editing, and visual question answering (VQA). In this paper, we introduce <em>Feature4X</em>, a universal framework designed to extend any functionality from 2D vision foundation model into the 4D realm, using only monocular video input, which is widely available from user-generated content. The "X" in Feature4X represents its versatility, enabling any task through adaptable, model-conditioned 4D feature field distillation. At the core of our framework is a dynamic optimization strategy that unifies multiple model capabilities into a single representation. Additionally, to the best of our knowledge, Feature4X is the first method to distill and lift the features of video foundation models (e.g. SAM2, InternVideo2) into an explicit <em>4D feature field</em> using Gaussian Splatting. Our experiments showcase novel view segment anything, geometric and appearance scene editing, and free-form VQA across all time steps, empowered by LLMs in feedback loops. These advancements broaden the scope of agentic AI applications by providing a foundation for scalable, contextually and spatiotemporally aware systems capable of immersive dynamic 4D scene interaction.
           </p>
         </div>
       </div>
@@ -387,11 +241,11 @@
       <h2 class="title is-3">Overview</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
-        We build upon MoSca and infer 2D priors on the input monocular video to separate the scene into static background and dynamic foreground elements. The static background is represented by a set of static 3D Gaussians (GS) with latent features, while the dynamic foreground is modeled with dynamic 3D Gaussians guided by Motion Scaffolds, a set of nodes {<i>v<sub>i</sub></i>} representing 3D motion trajectories over time and base latent features <i>h<sub>i</sub></i>. We compute the motion and latent features of dynamic 3D Gaussians by interpolating their <i>K</i>-Nearest Scaffold nodes. Given a target timestep <i>t</i>, we warp dynamic Gaussians from different timesteps based on their motions, fuse them with static Gaussians, and rasterize their colors and latent features into an RGB image and a <i>D</i>-dimensional feature map, respectively. The feature map is then fed into task-dependent decoders <i>&#120097;<sub>s</sub></i> to support tasks such as 2D semantic segmentation (SAM), 3D editing (CLIP-LSeg), and 4D query-based reasoning (InternVideo2).
+        Given an input monocular video, we infer 2D priors to segment static background (represented by <em>static 3D Gaussians</em> augmented with latent features) and dynamic foreground (represented by <em>dynamic 3D Gaussians</em> guided by Motion Scaffolds, a set of nodes {v<sub>i</sub>} encoding 3D motion trajectories and latent features h<sub>1</sub>). Dynamic Gaussian features and motions are computed via interpolation from their K-nearest scaffold nodes. At each timestep, dynamic Gaussians are warped and fused with static Gaussians. A parallel rasterization generates RGB images and a unified latent feature map, decoded into task-specific features—illustrated here by SAM2, CLIP-LSeg, and InternVideo2 for representative 2D (novel view segmentation), 3D (scene editing), and 4D (spatiotemporal VQA) tasks. Our framework generalizes to any 2D vision foundation model and is trained end-to-end using input RGB frames and customized features from pretrained 2D models. At inference, rendered feature maps from arbitrary views and timesteps are directly fed into task-specific decoders, seamlessly supporting user prompts and LLM interactions to form a unified 4D agentic AI system.
       </p>
       <br>
       <img
-              src="./media/pipeline/fig2_pipeline_v1.jpg"
+              src="./media/figs/fig2_pipeline.jpg"
               alt="Method Pipeline"
               style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
       >
@@ -404,15 +258,15 @@
   <div class="container is-max-desktop" >
     <!--    Method -->
     <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3">Novel view segmentation (SAM2) results</h2>
+      <h2 class="title is-3">Segment Anything in Dynamic 4D Scenes with SAM2 Feature Field</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
-        Overview of the 4D SAM-based mask assignment and propagation across a dynamic scene. (Left) A 4D scene representation and corresponding 4D SAM feature field. (Right) (a) Mask assignment demonstrates the segmentation of various scene elements, including buildings, roads, and vehicles, at time t=0 (b) Mask propagation across subsequent time frames (from t=10 to t=30 ) illustrates how the assigned masks are consistently tracked and updated as objects move through the scene, enabling accurate temporal correspondence. This approach ensures robust segmentation and tracking in dynamic 4D environments.
+        For any rendered novel view video, we support: (a) <em>Promptless segmentation</em> (segment everything): when no user prompt is provided, segmentation masks are automatically assigned at the first frame (t=0) and then propagated across all frames. (b) <em>Promptable segmentation</em> (segment anything): the user can segment any object—static or dynamic—at any timestep using a point or box prompt, and the corresponding mask is robustly tracked and propagated through subsequent frames.
       </p>
       <br>
       <img
-              src="./media/paper_results/sam_seg_results.jpg"
-              alt="Method Pipeline"
+              src="./media/figs/fig3_sam.png"
+              alt="Segment Anything"
               style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
       >
 
@@ -424,15 +278,15 @@
   <div class="container is-max-desktop" >
     <!--    Method -->
     <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3">Novel view segmentation (CLIP) results</h2>
+      <h2 class="title is-3">Baseline Comparison on SAM2 Inference.</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
-        Visualization of semantic understanding and view synthesis in a 4D scene with a flower pot. (Top left) The 4D scene captures the object and its environment. (Top right) Novel views generated by the model demonstrate realistic perspective shifts of the flower pot. (Bottom left) The 4D CLIP feature field representation encodes semantic information about the scene. (Bottom right) Semantic masks show the segmentation of the flower pot, wall, window, and curtain over time (t=10,55,95), demonstrating consistent semantic labeling and tracking across frames. This approach enables robust 4D scene understanding and segmentation.
+      We compare segmentation quality and inference speed between (a) the naive RGB-based approach and (b) our feature-based method. Ours achieves comparable segmentation, accurately tracking the object over time, and avoids RGB artifacts (red box region at t=70), while reducing inference time to about 4× speed-up.
       </p>
       <br>
       <img
-              src="./media/paper_results/clip_seg_results.jpg"
-              alt="Method Pipeline"
+              src="./media/figs/fig4_sam_compare.png"
+              alt="Baseline Comparison"
               style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
       >
 
@@ -444,15 +298,15 @@
   <div class="container is-max-desktop" >
     <!--    Method -->
     <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3">Language-guided 4D scene editing results</h2>
+      <h2 class="title is-3">Semantic 4D Scene Understanding with CLIP Feature Field</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
-        Language-guided 4D scene editing results. Demonstration of high-level object-specific manipulations using natural language prompts. (Top Row) One time frame of novel view angle generated by the model. (Bottom Row) Same frame of the entire reconstructed 4D scene. (Left) "Extract the swan," where the swan is isolated from its background. (Center) ”Delete the camel,” results in the removal of the camel from the scene and reconstruction of the background. (Right) ”Change the cow color to black and white” modifies the cow’s color to grayscale.
+        By lifting CLIP-LSeg features into a 4D feature field, we enable <em>pixel-level semantic segmentation</em> from any view at any timestep. This allows robust 4D scene understanding, even as object appearances change over time—for example, accurately identifying a blooming flower from bud to full bloom across views.
       </p>
       <br>
       <img
-              src="./media/paper_results/editing_results.jpg"
-              alt="Method Pipeline"
+              src="./media/figs/fig5_clip_seg_results.jpg"
+              alt="Scene Understanding"
               style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
       >
 
@@ -464,15 +318,35 @@
   <div class="container is-max-desktop" >
     <!--    Method -->
     <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3">Novel view synthesis</h2>
+      <h2 class="title is-3">Scene Editing with AI Agent</h2>
       <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
       <p style="text-align: justify;">
-        Q & A Illustration of local and global novel view synthesis from an input video frame. (Top Left) Original input frame, featuring a dog on a window ledge. (Top Center, Right) Local novel view and its corresponding feature representation, capturing fine details and localized perspective shifts. (Bottom) global novel view and its feature representation, showing the full scene’s spatial context and structure.
+        Given user prompts, our GPT-powered agent interprets editing intent and autonomously performs scene edits via our 4D CLIP feature field. Examples include both <em>geometric</em> (e.g., "extract" and "delete") and <em>appearance</em> (e.g., "change color") editing in 3D space. While results may not be perfect due to imperfect fine-grained feature alignment and non-optimal editing parameter tuning, the agent adaptively refines parameters and applies edits consistently across views and time—greatly reducing the need for manual tuning—and demonstrates robust, interactive 4D scene manipulation.
       </p>
       <br>
       <img
-              src="./media/paper_results/novel_view.jpg"
-              alt="Method Pipeline"
+              src="./media/figs/fig6_editing_results.jpg"
+              alt="Scene Editing"
+              style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+      >
+
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop" >
+    <!--    Method -->
+    <div class="hero-body" style="text-align: center;">
+      <h2 class="title is-3">VQA with Chatbot Agent</h2>
+      <!--      <h2 class="subtitle has-text-centered" style="font-size: 14px;">-->
+      <p style="text-align: justify;">
+        (Left) Our model supports free-form VQA across diverse question types—<em>general</em>, <em>spatial</em>, and <em>temporal</em>—by distilling InternVideo2 features. (Right) At each timestep, we reconstruct both a 4D radiance field and a 4D feature field, providing more inference sources beyond the input video frame—including local (moving camera) and global (zoomed-out) novel views and their corresponding feature maps—thereby supporting VQA in 4D and enhancing the model's spatiotemporal reasoning capabilities.
+      </p>
+      <br>
+      <img
+              src="./media/figs/fig7_VQA.jpg"
+              alt="VQA with Chatbot Agent"
               style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
       >
 
