@@ -47,19 +47,33 @@
       .desktop-nav {
         position: sticky;
         top: 0;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-        padding: 0.5rem 0;
+        z-index: 100;
+        background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(243,244,246,0.95));
+        padding: 0.4rem 0.15rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+        width: 100%;
+      }
+      
+      .desktop-nav .nav-container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 0.25rem;
       }
       
       .desktop-nav ul {
         display: flex;
-        justify-content: center;
-        max-width: 1200px;
-        margin: 0 auto;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0.1rem;
         padding: 0;
+        margin: 0;
         list-style: none;
+        max-width: 100%;
       }
       
       .desktop-nav li {
@@ -69,26 +83,84 @@
       
       .desktop-nav a {
         display: block;
-        padding: 0.5rem 0.8rem;
-        margin: 0 0.1rem;
+        padding: 0.2rem 0.3rem;
         color: #333;
-        font-size: 0.9rem;
-        font-weight: 500;
         text-decoration: none;
+        font-weight: 500;
+        font-size: 0.7rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
         white-space: nowrap;
-        border-radius: 6px;
-        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
       }
       
       .desktop-nav a:hover {
-        background: rgba(106, 17, 203, 0.08);
         color: #6a11cb;
+        background-color: rgba(106, 17, 203, 0.05);
+      }
+      
+      .desktop-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      
+      .desktop-nav a:hover::after {
+        width: 100%;
       }
       
       .desktop-nav a.active {
-        background: rgba(106, 17, 203, 0.12);
         color: #6a11cb;
-        font-weight: 600;
+        background-color: rgba(106, 17, 203, 0.08);
+      }
+      
+      .desktop-nav a.active::after {
+        width: 100%;
+      }
+      
+      /* 针对不同屏幕宽度的优化 */
+      @media screen and (min-width: 769px) and (max-width: 850px) {
+        .desktop-nav a {
+          padding: 0.15rem 0.25rem;
+          font-size: 0.65rem;
+        }
+        
+        .desktop-nav ul {
+          gap: 0.05rem;
+        }
+      }
+      
+      @media screen and (min-width: 992px) {
+        .desktop-nav a {
+          padding: 0.25rem 0.35rem;
+          font-size: 0.75rem;
+        }
+        
+        .desktop-nav ul {
+          gap: 0.15rem;
+        }
+      }
+      
+      @media screen and (min-width: 1200px) {
+        .desktop-nav a {
+          padding: 0.3rem 0.4rem;
+          font-size: 0.8rem;
+        }
+        
+        .desktop-nav ul {
+          gap: 0.2rem;
+        }
+        
+        .desktop-nav .nav-container {
+          padding: 0 0.5rem;
+        }
       }
     }
     
@@ -114,6 +186,53 @@
     .abstract-section .content-card,
     #overview .content-card {
       padding: 2rem !important;
+    }
+    
+    /* 导航栏优化 - 更新的样式 */
+    @media screen and (min-width: 769px) {
+      .desktop-nav {
+        padding: 0.4rem 0;
+      }
+      
+      .desktop-nav .nav-container {
+        max-width: 900px;
+      }
+      
+      .desktop-nav ul {
+        justify-content: space-around;
+        gap: 0.5rem;
+      }
+      
+      .desktop-nav li {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+      }
+      
+      .desktop-nav a {
+        text-align: center;
+        min-width: 100px;
+        margin: 0 auto;
+      }
+      
+      /* 调整媒体查询样式 */
+      @media screen and (min-width: 769px) and (max-width: 850px) {
+        .desktop-nav a {
+          min-width: 80px;
+        }
+      }
+      
+      @media screen and (min-width: 992px) {
+        .desktop-nav a {
+          min-width: 90px;
+        }
+      }
+      
+      @media screen and (min-width: 1200px) {
+        .desktop-nav a {
+          min-width: 100px;
+        }
+      }
     }
   </style>
 
@@ -146,6 +265,60 @@
 </head>
 <body>
 
+<!-- 为导航栏添加自适应样式 -->
+<style>
+  /* 优化导航栏在不同窗口宽度下的显示 */
+  @media screen and (max-width: 900px) {
+    .desktop-nav .nav-link {
+      padding: 0.2rem 0.15rem !important;
+      font-size: 0.7rem !important;
+    }
+    
+    .desktop-nav ul {
+      gap: 0.05rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .desktop-nav .nav-link {
+      padding: 0.15rem 0.1rem !important;
+      font-size: 0.65rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .desktop-nav .nav-link {
+      padding: 0.1rem 0.08rem !important;
+      font-size: 0.6rem !important;
+    }
+    
+    .desktop-nav ul {
+      gap: 0.03rem !important;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .desktop-nav {
+      display: none !important;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    .desktop-nav .nav-container {
+      max-width: 1000px !important;
+    }
+    
+    .desktop-nav .nav-link {
+      padding: 0.25rem 0.2rem !important;
+      font-size: 0.8rem !important;
+    }
+    
+    .desktop-nav ul {
+      gap: 0.2rem !important;
+    }
+  }
+</style>
+
 <!-- 添加阅读进度条 -->
 <div class="reading-progress" id="reading-progress"></div>
 
@@ -159,11 +332,10 @@
   <ul>
     <li><a href="#abstract" class="nav-link">Abstract</a></li>
     <li><a href="#overview" class="nav-link">Overview</a></li>
-    <li><a href="#sam2" class="nav-link">SAM2 Segmentation</a></li>
-    <li><a href="#sam2-comparison" class="nav-link">SAM2 Comparison</a></li>
-    <li><a href="#clip" class="nav-link">CLIP Feature Field</a></li>
-    <li><a href="#editing" class="nav-link">Scene Editing</a></li>
-    <li><a href="#vqa" class="nav-link">VQA Chatbot</a></li>
+    <li><a href="#sam2" class="nav-link">Segmentation</a></li>
+    <li><a href="#clip" class="nav-link">Perception</a></li>
+    <li><a href="#editing" class="nav-link">Editing</a></li>
+    <li><a href="#vqa" class="nav-link">VQA</a></li>
     <li><a href="#bibtex" class="nav-link">BibTeX</a></li>
   </ul>
 </div>
@@ -172,17 +344,18 @@
 <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 
 <!-- 添加桌面端导航栏 -->
-<div class="desktop-nav" id="desktop-nav">
-  <ul>
-    <li><a href="#abstract" class="nav-link">Abstract</a></li>
-    <li><a href="#overview" class="nav-link">Overview</a></li>
-    <li><a href="#sam2" class="nav-link">SAM2 Segmentation</a></li>
-    <li><a href="#sam2-comparison" class="nav-link">SAM2 Comparison</a></li>
-    <li><a href="#clip" class="nav-link">CLIP Feature Field</a></li>
-    <li><a href="#editing" class="nav-link">Scene Editing</a></li>
-    <li><a href="#vqa" class="nav-link">VQA Chatbot</a></li>
-    <li><a href="#bibtex" class="nav-link">BibTeX</a></li>
-  </ul>
+<div class="desktop-nav" id="desktop-nav" style="padding: 0.3rem 0; width: 100%; overflow-x: hidden;">
+  <div class="nav-container" style="max-width: 100%; padding: 0 0.5rem;">
+    <ul style="display: flex; justify-content: space-between; gap: 0.15rem; flex-wrap: nowrap; width: 100%; padding: 0;">
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#abstract" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Abstract</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#overview" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Overview</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#sam2" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Segmentation</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#clip" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Perception</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#editing" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Editing</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#vqa" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">VQA</a></li>
+      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#bibtex" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">BibTeX</a></li>
+    </ul>
+  </div>
 </div>
 
 <style>
@@ -252,11 +425,13 @@
     margin-bottom: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden; /* 确保内容不会溢出 */
+    position: relative;
+    margin-top: 0.5rem;
   }
   
   .content-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(106, 17, 203, 0.15);
   }
   
   img, video {
@@ -973,7 +1148,7 @@
     .desktop-nav {
       display: flex;
       justify-content: center;
-      padding: 0.75rem 0;
+      padding: 0.75rem 0.5rem;
       background-color: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -1199,12 +1374,12 @@
       top: 0;
       z-index: 100;
       background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(243,244,246,0.95));
-      padding: 0.75rem 2rem;
+      padding: 0.4rem 0.15rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
       backdrop-filter: blur(5px);
+      width: 100%;
     }
     
 
@@ -1256,6 +1431,138 @@
   white-space: pre-wrap;
   border-left: 4px solid #4285f4;
 }
+
+/* 美化小标题样式 */
+.section-title {
+  position: relative;
+  padding-bottom: 0.8rem;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+  background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  font-family: 'Google Sans', sans-serif;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: auto;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(106, 17, 203, 0.3);
+}
+
+/* 标题悬停效果 */
+.section-title:hover {
+  transform: translateY(-2px);
+}
+
+.section-title:hover::after {
+  width: 120px;
+  box-shadow: 0 2px 8px rgba(106, 17, 203, 0.5);
+}
+
+/* 为每个标题容器添加一致的顶部和底部边距 */
+.hero-body h2.section-title, 
+.column h2.section-title {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* 确保标题容器居中 */
+.has-text-centered {
+  text-align: center !important;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 修复标题的wrapper样式 */
+.title-wrapper {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* 为标题添加微妙的光晕效果 */
+.section-title::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, rgba(106, 17, 203, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* 添加装饰性元素 */
+.section-title .section-title-decoration {
+  display: inline-block;
+  margin: 0 0.4rem;
+  opacity: 0.7;
+  vertical-align: middle;
+  font-size: 0.8em;
+  color: #6a11cb;
+  -webkit-text-fill-color: #6a11cb;
+  font-weight: normal;
+}
+
+/* 为卡片添加更好的视觉分隔 */
+.content-card {
+  margin-top: 1rem;
+  border-top: 3px solid rgba(106, 17, 203, 0.05);
+  padding-top: 1.5rem;
+}
+
+/* 为长标题添加特殊样式，确保它们在小屏幕上显示良好 */
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+    padding-bottom: 0.6rem;
+  }
+  
+  .section-title::after {
+    width: 60px;
+  }
+  
+  .section-title:hover::after {
+    width: 80px;
+  }
+  
+  .section-title .section-title-decoration {
+    font-size: 0.7em;
+    margin: 0 0.3rem;
+  }
+}
+
+/* 确保标题容器居中 */
+.has-text-centered {
+  text-align: center !important;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
 </style>
 
 <style>
@@ -1267,7 +1574,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="word-wrap: break-word; hyphens: auto;">Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields</h1>
+          <h1 class="title is-1 publication-title" style="word-wrap: break-word; hyphens: auto; background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; display: inline-block; padding: 0 1rem;">Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields</h1>
           <div class="is-size-5 publication-authors" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;">
             <span class="author-block">
               <a href="https://shijiezhou-ucla.github.io/">Shijie Zhou*</a><sup>1</sup>,</span>
@@ -1379,12 +1686,18 @@
   <span class="section-anchor" id="abstract"></span>
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 section-title">Abstract</h2>
+        <div class="has-text-centered">
+          <h2 class="title is-3 section-title">
+            <span class="section-title-decoration">✦</span>
+            Abstract
+            <span class="section-title-decoration">✦</span>
+          </h2>
+        </div>
         <div class="content-card">
-          <div class="content has-text-justified">
-            <p style="font-size: 1.05rem; line-height: 1.7; color: #333; margin-bottom: 1.2rem;">
+          <div class="content has-text-left">
+            <p style="font-size: 1.05rem; line-height: 1.7; color: #333; margin-bottom: 1.2rem; text-align: left;">
               Recent advancements in 2D and multimodal models have achieved remarkable success by leveraging large-scale training on extensive datasets. However, extending these achievements to enable free-form interactions and high-level semantic operations with complex 3D/4D scenes remains challenging. This difficulty stems from the limited availability of large-scale, annotated 3D/4D or multi-view datasets, which are crucial for generalizable vision and language tasks such as open-vocabulary and prompt-based segmentation, language-guided editing, and visual question answering (VQA). In this paper, we introduce <em>Feature4X</em>, a universal framework designed to extend any functionality from 2D vision foundation model into the 4D realm, using only monocular video input, which is widely available from user-generated content. The "X" in Feature4X represents its versatility, enabling any task through adaptable, model-conditioned 4D feature field distillation. At the core of our framework is a dynamic optimization strategy that unifies multiple model capabilities into a single representation. Additionally, to the best of our knowledge, Feature4X is the first method to distill and lift the features of video foundation models (e.g. SAM2, InternVideo2) into an explicit <em>4D feature field</em> using Gaussian Splatting. Our experiments showcase novel view segment anything, geometric and appearance scene editing, and free-form VQA across all time steps, empowered by LLMs in feedback loops. These advancements broaden the scope of agentic AI applications by providing a foundation for scalable, contextually and spatiotemporally aware systems capable of immersive dynamic 4D scene interaction.
             </p>
           </div>
@@ -1411,10 +1724,16 @@
   <span class="section-anchor" id="overview"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">Overview</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          Overview
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; line-height: 1.7; font-size: 1.05rem; color: #333; margin-bottom: 1.2rem;">
+        <p style="text-align: left; line-height: 1.7; font-size: 1.05rem; color: #333; margin-bottom: 1.2rem;">
           Given an input monocular video, we infer 2D priors to segment static background (represented by <em>static 3D Gaussians</em> augmented with latent features) and dynamic foreground (represented by <em>dynamic 3D Gaussians</em> guided by Motion Scaffolds, a set of nodes {v<sub>i</sub>} encoding 3D motion trajectories and latent features h<sub>1</sub>). Dynamic Gaussian features and motions are computed via interpolation from their K-nearest scaffold nodes. At each timestep, dynamic Gaussians are warped and fused with static Gaussians. A parallel rasterization generates RGB images and a unified latent feature map, decoded into task-specific features—illustrated here by SAM2, CLIP-LSeg, and InternVideo2 for representative 2D (novel view segmentation), 3D (scene editing), and 4D (spatiotemporal VQA) tasks. Our framework generalizes to any 2D vision foundation model and is trained end-to-end using input RGB frames and customized features from pretrained 2D models. At inference, rendered feature maps from arbitrary views and timesteps are directly fed into task-specific decoders, seamlessly supporting user prompts and LLM interactions to form a unified 4D agentic AI system.
         </p>
         <div class="img-container">
@@ -1433,10 +1752,16 @@
   <span class="section-anchor" id="sam2"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">Segment Anything in Dynamic 4D Scenes with SAM2 Feature Field</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          Segment Anything in Dynamic 4D Scenes with SAM2 Feature Field
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; margin-bottom: 0.75rem;">
+        <p style="text-align: left; margin-bottom: 0.75rem;">
           For any rendered novel view video, we support: (a) <em>Promptless segmentation</em> (segment everything): when no user prompt is provided, segmentation masks are automatically assigned at the first frame (t=0) and then propagated across all frames. (b) <em>Promptable segmentation</em> (segment anything): the user can segment any object—static or dynamic—at any timestep using a point or box prompt, and the corresponding mask is robustly tracked and propagated through subsequent frames.
         </p>
         <div class="img-container">
@@ -1455,10 +1780,16 @@
   <span class="section-anchor" id="sam2-comparison"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">Baseline Comparison on SAM2 Inference</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          Baseline Comparison on SAM2 Inference
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; margin-bottom: 0.75rem;">
+        <p style="text-align: left; margin-bottom: 0.75rem;">
         We compare segmentation quality and inference speed between (a) the naive RGB-based approach and (b) our feature-based method. Ours achieves comparable segmentation, accurately tracking the object over time, and avoids RGB artifacts (red box region at t=70), while reducing inference time to about 4× speed-up.
         </p>
         <div class="img-container">
@@ -1477,10 +1808,16 @@
   <span class="section-anchor" id="clip"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">Semantic 4D Scene Understanding with CLIP Feature Field</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          Semantic 4D Scene Understanding with CLIP Feature Field
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; margin-bottom: 0.75rem;">
+        <p style="text-align: left; margin-bottom: 0.75rem;">
           By lifting CLIP-LSeg features into a 4D feature field, we enable <em>pixel-level semantic segmentation</em> from any view at any timestep. This allows robust 4D scene understanding, even as object appearances change over time—for example, accurately identifying a blooming flower from bud to full bloom across views.
         </p>
         <div class="img-container">
@@ -1499,10 +1836,16 @@
   <span class="section-anchor" id="editing"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">Scene Editing with AI Agent</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          Scene Editing with AI Agent
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; margin-bottom: 0.75rem;">
+        <p style="text-align: left; margin-bottom: 0.75rem;">
           Given user prompts, our GPT-powered agent interprets editing intent and autonomously performs scene edits via our 4D CLIP feature field. Examples include both <em>geometric</em> (e.g., "extract" and "delete") and <em>appearance</em> (e.g., "change color") editing in 3D space. While results may not be perfect due to imperfect fine-grained feature alignment and non-optimal editing parameter tuning, the agent adaptively refines parameters and applies edits consistently across views and time—greatly reducing the need for manual tuning—and demonstrates robust, interactive 4D scene manipulation.
         </p>
         <div class="img-container">
@@ -1521,10 +1864,16 @@
   <span class="section-anchor" id="vqa"></span>
   <div class="container is-max-desktop" >
     <!--    Method -->
-    <div class="hero-body" style="text-align: center;">
-      <h2 class="title is-3 section-title">VQA with Chatbot Agent</h2>
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3 section-title">
+          <span class="section-title-decoration">✦</span>
+          VQA with Chatbot Agent
+          <span class="section-title-decoration">✦</span>
+        </h2>
+      </div>
       <div class="content-card">
-        <p style="text-align: justify; margin-bottom: 0.75rem;">
+        <p style="text-align: left; margin-bottom: 0.75rem;">
           (Left) Our model supports free-form VQA across diverse question types—<em>general</em>, <em>spatial</em>, and <em>temporal</em>—by distilling InternVideo2 features. (Right) At each timestep, we reconstruct both a 4D radiance field and a 4D feature field, providing more inference sources beyond the input video frame—including local (moving camera) and global (zoomed-out) novel views and their corresponding feature maps—thereby supporting VQA in 4D and enhancing the model's spatiotemporal reasoning capabilities.
         </p>
         <div class="img-container">
@@ -1542,12 +1891,18 @@
 <section class="section feature-section" id="BibTeX" style="padding: 2rem 1.5rem;">
   <span class="section-anchor" id="bibtex"></span>
   <div class="container is-max-desktop content">
-    <h2 class="title section-title">BibTeX</h2>
+    <div class="has-text-centered">
+      <h2 class="title section-title">
+        <span class="section-title-decoration">✦</span>
+        BibTeX
+        <span class="section-title-decoration">✦</span>
+      </h2>
+    </div>
     <div class="content-card">
-      <pre style="margin-bottom: 0;"><code>@article{zhou2024feature4x,
+      <pre style="margin-bottom: 0;"><code>@article{zhou2025feature4x,
         author= {Shijie Zhou and Hui Ren and Yijia Weng and Shuwang Zhang and Zhen Wang and Dejia Xu and Zhiwen Fan and Suya You and Zhangyang Wang and Leonidas Guibas and Achuta Kadambi},
         title = {Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields},
-        year  = {2024},
+        year  = {2025},
       }
 </code></pre>
     </div>
@@ -1580,7 +1935,7 @@
               Website source code based on the Nerfies project page. If you want to reuse their source code, please credit them appropriately.
             </p>
             <p style="margin-top: 1.5rem; font-size: clamp(0.6rem, 1.2vw, 0.8rem); margin-bottom: 0; padding: 0 1rem;">
-              © 2024 Feature4X Team - All Rights Reserved
+              © 2025 Feature4X Team - All Rights Reserved
             </p>
           </div>
         </div>
@@ -1995,7 +2350,8 @@
     setActiveNavItem();
     window.addEventListener('scroll', setActiveNavItem);
   });
-</script>
+  
+  </script>
 
 <script>
   function toggleSliders() {
