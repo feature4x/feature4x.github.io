@@ -1,3 +1,9 @@
+/**
+ * Feature4X Project Initialization Script
+ * Main entry point for website initialization
+ */
+
+// Disable VideoJS help popup
 window.HELP_IMPROVE_VIDEOJS = false;
 
 // 注释掉不存在的资源引用，避免404错误
@@ -20,62 +26,53 @@ window.HELP_IMPROVE_VIDEOJS = false;
 //   $('#interpolation-image-wrapper').empty().append(image);
 // }
 
-
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
-
+/**
+ * Initialize website functionality when DOM is loaded
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle hamburger menu for any navbar if present
+  const navbarBurgers = document.querySelectorAll('.navbar-burger');
+  if (navbarBurgers.length > 0) {
+    navbarBurgers.forEach(burger => {
+      burger.addEventListener('click', () => {
+        // Get the target from the "data-target" attribute
+        const target = burger.dataset.target;
+        const menu = document.getElementById(target);
+        
+        // Toggle the "is-active" class on both the burger and the menu
+        burger.classList.toggle('is-active');
+        if (menu) {
+          menu.classList.toggle('is-active');
+        }
+      });
     });
-
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 3,
-			loop: true,
-			infinite: true,
-			autoplay: false,
-			autoplaySpeed: 3000,
-    }
-
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
-    }
-
-    // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
-    if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
-    }
-
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
+  }
+  
+  // Fade in content sections on scroll
+  const fadeElements = document.querySelectorAll('.fade-in');
+  if (fadeElements.length > 0) {
+    // Initial check for elements in viewport
+    checkFadeElements();
     
-    // 注释掉不存在的资源加载功能
-    // preloadInterpolationImages();
+    // Check elements on scroll
+    window.addEventListener('scroll', checkFadeElements);
+  }
+  
+  // Initialize any additional components if needed
+});
 
-    // $('#interpolation-slider').on('input', function(event) {
-    //   setInterpolationImage(this.value);
-    // });
-    // setInterpolationImage(0);
-    // $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
-
-    bulmaSlider.attach();
-
-})
+/**
+ * Check which elements should fade in based on viewport position
+ */
+function checkFadeElements() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  fadeElements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150; // How much of the element needs to be visible
+    
+    if (elementTop < window.innerHeight - elementVisible) {
+      element.classList.add('appear');
+    }
+  });
+}

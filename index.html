@@ -27,223 +27,20 @@
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/components.css">
   <link rel="icon" href="data:,"> <!-- Empty favicon -->
-
-  <style>
-    /* 视频播放器自定义样式 - 已移动到统一的视频控件样式中 */
-  </style>
-
-  <style>
-    /* 覆盖视频播放按钮样式 - 已移动到统一的视频控件样式中 */
-    
-    /* 桌面导航栏专用样式 - 解决换行问题 */
-    @media screen and (min-width: 769px) {
-      .desktop-nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(243,244,246,0.95));
-        padding: 0.4rem 0.15rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        display: flex;
-        justify-content: center;
-        backdrop-filter: blur(5px);
-        width: 100%;
-      }
-      
-      .desktop-nav .nav-container {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 0.25rem;
-      }
-      
-      .desktop-nav ul {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 0.1rem;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        max-width: 100%;
-      }
-      
-      .desktop-nav li {
-        margin: 0;
-        padding: 0;
-      }
-      
-      .desktop-nav a {
-        display: block;
-        padding: 0.2rem 0.3rem;
-        color: #333;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.7rem;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .desktop-nav a:hover {
-        color: #6a11cb;
-        background-color: rgba(106, 17, 203, 0.05);
-      }
-      
-      .desktop-nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #6a11cb, #2575fc);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-      
-      .desktop-nav a:hover::after {
-        width: 100%;
-      }
-      
-      .desktop-nav a.active {
-        color: #6a11cb;
-        background-color: rgba(106, 17, 203, 0.08);
-      }
-      
-      .desktop-nav a.active::after {
-        width: 100%;
-      }
-      
-      /* 针对不同屏幕宽度的优化 */
-      @media screen and (min-width: 769px) and (max-width: 850px) {
-        .desktop-nav a {
-          padding: 0.15rem 0.25rem;
-          font-size: 0.65rem;
-        }
-        
-        .desktop-nav ul {
-          gap: 0.05rem;
-        }
-      }
-      
-      @media screen and (min-width: 992px) {
-        .desktop-nav a {
-          padding: 0.25rem 0.35rem;
-          font-size: 0.75rem;
-        }
-        
-        .desktop-nav ul {
-          gap: 0.15rem;
-        }
-      }
-      
-      @media screen and (min-width: 1200px) {
-        .desktop-nav a {
-          padding: 0.3rem 0.4rem;
-          font-size: 0.8rem;
-        }
-        
-        .desktop-nav ul {
-          gap: 0.2rem;
-        }
-        
-        .desktop-nav .nav-container {
-          padding: 0 0.5rem;
-        }
-      }
-    }
-    
-    /* Abstract和Overview文本优化 */
-    .abstract-section .content p,
-    #overview .content-card p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #333;
-      margin-bottom: 1.2rem;
-      text-indent: 0; /* 移除段落缩进 */
-    }
-    
-    .abstract-section em,
-    #overview em {
-      background: linear-gradient(120deg, rgba(106, 17, 203, 0.08) 0%, rgba(37, 117, 252, 0.08) 100%);
-      padding: 0.2em 0.4em;
-      border-radius: 4px;
-      font-style: normal;
-      font-weight: 600;
-    }
-    
-    .abstract-section .content-card,
-    #overview .content-card {
-      padding: 2rem !important;
-    }
-    
-    /* 导航栏优化 - 更新的样式 */
-    @media screen and (min-width: 769px) {
-      .desktop-nav {
-        padding: 0.4rem 0;
-      }
-      
-      .desktop-nav .nav-container {
-        max-width: 900px;
-      }
-      
-      .desktop-nav ul {
-        justify-content: space-around;
-        gap: 0.5rem;
-      }
-      
-      .desktop-nav li {
-        display: flex;
-        justify-content: center;
-        flex: 1;
-      }
-      
-      .desktop-nav a {
-        text-align: center;
-        min-width: 100px;
-        margin: 0 auto;
-      }
-      
-      /* 调整媒体查询样式 */
-      @media screen and (min-width: 769px) and (max-width: 850px) {
-        .desktop-nav a {
-          min-width: 80px;
-        }
-      }
-      
-      @media screen and (min-width: 992px) {
-        .desktop-nav a {
-          min-width: 90px;
-        }
-      }
-      
-      @media screen and (min-width: 1200px) {
-        .desktop-nav a {
-          min-width: 100px;
-        }
-      }
-    }
-  </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/site.js"></script>
 
 <!-- slider scripts-->
-  <script
+  <script type="module"
           defer
           src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"
   ></script>
@@ -252,78 +49,17 @@
           href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
   />
 
-  <!-- swiper -->
-  <!-- https://swiperjs.com/demos -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-
   <!-- img comparison slider -->
   <!-- https://github.com/sneas/img-comparison-slider -->
-
-
 </head>
 <body>
 
-<!-- 为导航栏添加自适应样式 -->
-<style>
-  /* 优化导航栏在不同窗口宽度下的显示 */
-  @media screen and (max-width: 900px) {
-    .desktop-nav .nav-link {
-      padding: 0.2rem 0.15rem !important;
-      font-size: 0.7rem !important;
-    }
-    
-    .desktop-nav ul {
-      gap: 0.05rem !important;
-    }
-  }
-  
-  @media screen and (max-width: 800px) {
-    .desktop-nav .nav-link {
-      padding: 0.15rem 0.1rem !important;
-      font-size: 0.65rem !important;
-    }
-  }
-  
-  @media screen and (max-width: 700px) {
-    .desktop-nav .nav-link {
-      padding: 0.1rem 0.08rem !important;
-      font-size: 0.6rem !important;
-    }
-    
-    .desktop-nav ul {
-      gap: 0.03rem !important;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    .desktop-nav {
-      display: none !important;
-    }
-  }
-  
-  @media screen and (min-width: 1200px) {
-    .desktop-nav .nav-container {
-      max-width: 1000px !important;
-    }
-    
-    .desktop-nav .nav-link {
-      padding: 0.25rem 0.2rem !important;
-      font-size: 0.8rem !important;
-    }
-    
-    .desktop-nav ul {
-      gap: 0.2rem !important;
-    }
-  }
-</style>
-
+<!-- For mobile navigation -->
 <!-- 添加阅读进度条 -->
 <div class="reading-progress" id="reading-progress"></div>
 
 <!-- 移动端导航触发按钮 -->
-<button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="打开导航菜单">
+<button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open navigation menu">
   <i class="fas fa-bars"></i>
 </button>
 
@@ -333,6 +69,7 @@
     <li><a href="#abstract" class="nav-link">Abstract</a></li>
     <li><a href="#overview" class="nav-link">Overview</a></li>
     <li><a href="#sam2" class="nav-link">Segmentation</a></li>
+    <li><a href="#sam2-comparison" class="nav-link">SAM2 Comparison</a></li>
     <li><a href="#clip" class="nav-link">Perception</a></li>
     <li><a href="#editing" class="nav-link">Editing</a></li>
     <li><a href="#vqa" class="nav-link">VQA</a></li>
@@ -344,1222 +81,33 @@
 <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 
 <!-- 添加桌面端导航栏 -->
-<div class="desktop-nav" id="desktop-nav" style="padding: 0.3rem 0; width: 100%; overflow-x: hidden;">
-  <div class="nav-container" style="max-width: 100%; padding: 0 0.5rem;">
-    <ul style="display: flex; justify-content: space-between; gap: 0.15rem; flex-wrap: nowrap; width: 100%; padding: 0;">
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#abstract" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Abstract</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#overview" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Overview</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#sam2" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Segmentation</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#clip" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Perception</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#editing" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">Editing</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#vqa" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">VQA</a></li>
-      <li style="flex: 1; text-align: center; min-width: 0;"><a href="#bibtex" class="nav-link" style="padding: 0.2rem 0.15rem; font-size: 0.7rem; white-space: nowrap; display: block;">BibTeX</a></li>
+<div class="desktop-nav" id="desktop-nav">
+  <div class="nav-container">
+    <ul>
+      <li><a href="#abstract" class="nav-link">Abstract</a></li>
+      <li><a href="#overview" class="nav-link">Overview</a></li>
+      <li><a href="#sam2" class="nav-link">Segmentation</a></li>
+      <li><a href="#clip" class="nav-link">Perception</a></li>
+      <li><a href="#editing" class="nav-link">Editing</a></li>
+      <li><a href="#vqa" class="nav-link">VQA</a></li>
+      <li><a href="#bibtex" class="nav-link">BibTeX</a></li>
     </ul>
   </div>
 </div>
 
-<style>
-  .container_teaser {
-    display: flex; /* Enables Flexbox */
-    justify-content: center; /* Horizontally centers the content */
-    align-items: center; /* Vertically centers the content */
-    height: 100%; /* Set the height of the container */
-    width: 100%;
-  }
 
-  .column_teaser {
-    flex: 0 0 auto; /* This ensures that the column doesn't grow or shrink */
-    width: 100%; /* Adjust this width as needed */
-    max-width: 500px; /* Adjust this max-width as needed */
-    margin: 0 auto; /* Centers the column within the container */
-  }
-  
-  /* Enhanced styling for better visual appeal */
-  body {
-    font-family: 'Noto Sans', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* 防止水平滚动 */
-  }
-  
-  .publication-title {
-    font-family: 'Google Sans', 'Noto Sans', sans-serif;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-  }
-  
-  .hero.teaser {
-    margin: 1.5rem 0;
-    padding: 1.5rem 0;
-    transition: background-color 0.3s ease;
-  }
-  
-  .section-title {
-    margin-bottom: 1.5rem;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .section-title:after {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 3px;
-    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-    bottom: -8px;
-    left: 25%;
-  }
-  
-  .content-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* 确保内容不会溢出 */
-    position: relative;
-    margin-top: 0.5rem;
-  }
-  
-  .content-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(106, 17, 203, 0.15);
-  }
-  
-  img, video {
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    margin: 1rem auto;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    display: block; /* 确保图片居中 */
-  }
-  
-  /* 特殊处理视频，确保它下方有足够空间 */
-  .video-container {
-    position: relative;
-    margin-bottom: 2.5rem;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .img-container img:hover, .video-container video:hover {
-    transform: scale(1.01); /* 略微减小悬停缩放比例 */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  }
-  
-  .feature-section {
-    background-color: #f0f4f8;
-    border-radius: 10px;
-    padding: 2rem;
-    margin: 2rem 0;
-  }
-  
-  .author-block a {
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .author-block a:hover {
-    color: #6a11cb;
-    text-decoration: underline;
-  }
-  
-  .link-block {
-    margin: 0 0.5rem;
-  }
-  
-  .external-link.button {
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .external-link.button:hover {
-    transform: translateY(-3px);
-    background-color: #4a5568 !important;
-  }
-  
-  /* Alternating section backgrounds for visual interest */
-  .hero.teaser:nth-child(odd) {
-    background-color: #f0f4f8;
-  }
-  
-  .hero.teaser:nth-child(even) {
-    background-color: #fff;
-  }
-  
-  /* 图片容器响应式样式 */
-  .img-container {
-    margin: 0.75rem auto;
-    width: 100%;
-    text-align: center;
-    overflow: hidden; /* 确保内容不会溢出 */
-    position: relative; /* 添加相对定位支持点击提示 */
-    border-radius: 8px;
-  }
-  
-  .img-container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  
-  /* Responsive typography */
-  @media screen and (max-width: 768px) {
-    .title.is-1 {
-      font-size: 1.75rem !important;
-      line-height: 1.3 !important;
-    }
-    
-    .is-size-5 {
-      font-size: 0.9rem !important;
-    }
-    
-    h2.title.is-3 {
-      font-size: 1.5rem !important;
-    }
-    
-    .content-card {
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .hero-body {
-      padding: 1rem 0.75rem;
-    }
-    
-    .container.is-max-desktop {
-      padding: 0 0.75rem;
-    }
-    
-    .section-title:after {
-      width: 70%;
-      left: 15%;
-      height: 2px;
-    }
-    
-    /* 优化移动端按钮样式 */
-    .publication-links .link-block {
-      margin: 0.25rem;
-    }
-    
-    .external-link.button {
-      font-size: 0.85rem;
-      padding: 0 0.75rem;
-      height: 2.25rem;
-    }
-    
-    /* 优化作者列表在移动端的显示 */
-    .publication-authors {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .author-block {
-      margin: 0 0.25rem;
-      white-space: nowrap;
-    }
-    
-    /* 调整内容和图片的间距和大小 */
-    img, video {
-      margin: 0.75rem auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* 优化页脚在移动端的显示 */
-    footer.footer {
-      padding: 1.5rem 0;
-    }
-    
-    footer .icon-link {
-      font-size: 1.5rem !important;
-    }
-    
-    #scroll-to-top {
-      bottom: 20px;
-      right: 20px;
-      padding: 10px;
-      font-size: 14px;
-    }
-    
-    /* 减小视频容器底部间距 */
-    .video-container {
-      margin-bottom: 2rem;
-    }
-  }
-  
-  /* 针对特小屏幕的额外优化 */
-  @media screen and (max-width: 480px) {
-    .title.is-1 {
-      font-size: 1.5rem !important;
-    }
-    
-    h2.title.is-3 {
-      font-size: 1.25rem !important;
-    }
-    
-    .content p {
-      font-size: 0.9rem;
-    }
-    
-    .publication-venue {
-      padding: 0.35rem 1rem !important;
-    }
-    
-    .publication-venue p {
-      font-size: 0.9rem !important;
-    }
-  }
-  
-  /* Scroll to top button */
-  #scroll-to-top {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #6a11cb;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 18px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  #scroll-to-top:hover {
-    background-color: #4a0d8f;
-    transform: translateY(-3px);
-  }
-  
-  /* Animate section appearance on scroll */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-  }
 
-  .content p {
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-  
-  /* 通过负margin使内容卡片更紧凑 */
-  .hero-body {
-    padding: 1.5rem 1.25rem;
-  }
-  
-  .container.is-max-desktop {
-    padding: 0 1rem;
-  }
-  
-  /* 调整图片文本间距 */
-  .content-card p + img,
-  .content-card p + .img-container {
-    margin-top: 0.75rem;
-  }
-  
-  /* 调整抽象部分的样式 */
-  .abstract-section {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  
-  /* 调整段落间距和对齐 */
-  .content-card .content {
-    margin-bottom: 0;
-  }
 
-  /* 减小首页标题区域高度 */
-  .main-header .hero-body {
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
-  }
-  
-  /* 调整主标题下方的作者区域 */
-  .publication-authors {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* 减小各部分的垂直外边距 */
-  br + section.hero.teaser {
-    margin-top: 0;
-  }
 
-  /* 优化移动端的数学符号和方程式显示 */
-  sup, sub {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  
-  sup {
-    top: -0.5em;
-  }
-  
-  sub {
-    bottom: -0.25em;
-  }
-  
-  /* 移动端特殊处理，防止文本溢出 */
-  em, i {
-    font-style: italic;
-    white-space: normal;
-    word-break: break-word;
-  }
-  
-  /* 图片底部文字说明样式 */
-  .img-caption {
-    font-size: 14px;
-    color: #555;
-    margin-top: 0.5rem;
-    text-align: center;
-    font-style: italic;
-  }
-  
-  /* 文本对齐调整，在移动端保持良好阅读体验 */
-  .has-text-justified {
-    text-align: justify;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .has-text-justified {
-      text-align: left; /* 在移动端使用左对齐，提高可读性 */
-    }
-    
-    /* 确保数学符号正确显示 */
-    .content-card p {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-    }
-    
-    /* 移动端公式和复杂符号的特殊处理 */
-    sub, sup {
-      font-size: 70%;
-    }
-  }
 
-  /* 改进触摸交互区域 */
-  @media (hover: none) and (pointer: coarse) {
-    /* 在触摸设备上应用这些样式 */
-    .link-block a.button {
-      padding: 0.6rem 1rem;
-      margin: 0.3rem;
-    }
-    
-    .author-block a {
-      padding: 0.2rem 0;
-      display: inline-block;
-    }
-    
-    /* 增加页脚链接的触摸面积 */
-    footer .icon-link {
-      padding: 0.5rem;
-      margin: 0 0.3rem;
-    }
-    
-    /* 优化滚动按钮 */
-    #scroll-to-top {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  
-  /* 添加滑动图片查看效果 */
-  .swipeable-container {
-    position: relative;
-    overflow: hidden;
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  .swipe-indicator {
-    position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-  }
-  
-  .swipe-indicator span {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: background-color 0.3s;
-  }
-  
-  .swipe-indicator span.active {
-    background-color: #6a11cb;
-    transform: scale(1.2);
-  }
 
-  /* 加载动画样式 */
-  .loading {
-    position: relative;
-  }
-  
-  .loading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    border: 4px solid rgba(106, 17, 203, 0.3);
-    border-radius: 50%;
-    border-top-color: #6a11cb;
-    animation: spin 1s linear infinite;
-    z-index: 10;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  /* 图片和视频的淡入效果 */
-  .img-container img, .video-container video {
-    transition: opacity 0.5s ease;
-  }
-  
-  /* 骨架屏样式 */
-  .skeleton-loading {
-    position: relative;
-    overflow: hidden;
-    background-color: #e2e5e7;
-    border-radius: 8px;
-  }
-  
-  .skeleton-loading::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      rgba(255, 255, 255, 0) 0%, 
-      rgba(255, 255, 255, 0.6) 50%, 
-      rgba(255, 255, 255, 0) 100%);
-    animation: skeleton-loading 1.5s infinite;
-  }
-  
-  @keyframes skeleton-loading {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
-
-  /* 移动端导航侧边栏 */
-  .mobile-nav-toggle {
-    display: none;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border-radius: 50%;
-    color: white;
-    z-index: 1000;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .mobile-nav-sidebar {
-    position: fixed;
-    top: 0;
-    right: -250px;
-    width: 250px;
-    height: 100vh;
-    background-color: white;
-    z-index: 999;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
-    padding: 70px 20px 20px;
-    overflow-y: auto;
-  }
-  
-  .mobile-nav-sidebar.active {
-    right: 0;
-  }
-  
-  .mobile-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .mobile-nav-overlay.active {
-    display: block;
-    opacity: 1;
-  }
-  
-  .mobile-nav-sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .mobile-nav-sidebar li {
-    margin-bottom: 15px;
-  }
-  
-  .mobile-nav-sidebar a {
-    display: block;
-    padding: 10px;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-weight: 500;
-  }
-  
-  .mobile-nav-sidebar a:hover, 
-  .mobile-nav-sidebar a.active {
-    background-color: rgba(106, 17, 203, 0.1);
-    color: #6a11cb;
-  }
-  
-  /* 导航进度指示器 */
-  .reading-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-    z-index: 1000;
-    transition: width 0.2s ease;
-  }
-  
-  /* 锚点样式 */
-  .section-anchor {
-    position: relative;
-    top: -70px;
-    visibility: hidden;
-    display: block;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .mobile-nav-toggle {
-      display: flex;
-    }
-  }
-
-  /* 图片预览功能 */
-  .lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    touch-action: none; /* 防止触摸滚动 */
-  }
-  
-  .lightbox-container {
-    position: relative;
-    width: 90%;
-    height: 80%;
-    overflow: hidden;
-  }
-  
-  .lightbox-image {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-    margin: 0 auto;
-    transition: transform 0.3s ease;
-    transform-origin: center;
-  }
-  
-  .lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 2001;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-  }
-  
-  .lightbox-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .img-container img {
-    cursor: zoom-in;
-  }
-  
-  /* 在移动设备上添加点击提示 */
-  .img-container::after {
-    content: "Click to enlarge";
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-  
-  @media (hover: none) and (pointer: coarse) {
-    .img-container:active::after {
-      opacity: 1;
-    }
-  }
-
-  /* 桌面端美化 */
-  @media screen and (min-width: 769px) {
-    /* 主内容区域美化 */
-    .content-card {
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    
-    .content-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    }
-    
-    /* 标题美化 */
-    .publication-title {
-      font-size: 2.5rem !important;
-      letter-spacing: -0.02em;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    /* 图片美化 */
-    .img-container {
-      margin: 1.5rem auto;
-      transition: transform 0.5s ease;
-      cursor: pointer;
-    }
-    
-    .img-container::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(106, 17, 203, 0.05);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      border-radius: 8px;
-      pointer-events: none;
-    }
-    
-    .img-container:hover::before {
-      opacity: 1;
-    }
-    
-    /* 美化鼠标悬停效果 */
-    .external-link.button {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    }
-    
-    .external-link.button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* CVPR 图标美化 */
-    .publication-venue {
-      position: relative;
-      padding-left: 2.5rem !important;
-    }
-    
-    .venue-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.2rem;
-      color: #6a11cb;
-    }
-    
-    /* 主导航栏 */
-    .desktop-nav {
-      display: flex;
-      justify-content: center;
-      padding: 0.75rem 0.5rem;
-      background-color: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    
-    .desktop-nav ul {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .desktop-nav li {
-      margin: 0 0.75rem;
-    }
-    
-    .desktop-nav a {
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .desktop-nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 50%;
-      background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    
-    .desktop-nav a:hover {
-      color: #6a11cb;
-    }
-    
-    .desktop-nav a:hover::after {
-      width: 70%;
-    }
-    
-    .desktop-nav a.active {
-      color: #6a11cb;
-    }
-    
-    .desktop-nav a.active::after {
-      width: 70%;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .desktop-nav {
-      display: none;
-    }
-  }
-
-  /* 视频播放器美化 */
-  .video-container {
-    position: relative;
-    margin-bottom: 2.5rem;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* 移除所有自定义视频控件样式配置 */
-  
-  /* 优化Abstract和Overview文本显示 */
-  .abstract-section .content p,
-  #overview .content-card p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    letter-spacing: 0.01rem;
-    color: #333;
-  }
-  
-  /* 为强调的文本添加特殊样式 */
-  .abstract-section em,
-  #overview em {
-    background: linear-gradient(120deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-style: normal;
-    font-weight: 600;
-    color: #444;
-  }
-  
-  /* 增加段落间距以提高可读性 */
-  .abstract-section p,
-  #overview p {
-    margin-bottom: 1.2rem;
-  }
-  
-  /* 添加段落首行缩进 */
-  .abstract-section .content p,
-  #overview .content-card p {
-    text-indent: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .abstract-section .content p,
-    #overview .content-card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-  }
-  
-  /* 桌面端装饰元素 */
-  @media screen and (min-width: 769px) {
-    .hero.main-header {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero.main-header::before {
-      content: "";
-      position: absolute;
-      top: 50px;
-      right: 10%;
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, rgba(106, 17, 203, 0.05) 0%, rgba(37, 117, 252, 0.05) 100%);
-      border-radius: 50%;
-      z-index: 0;
-      animation: float 15s ease-in-out infinite;
-    }
-    
-    .hero.main-header::after {
-      content: "";
-      position: absolute;
-      bottom: 30px;
-      left: 15%;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(135deg, rgba(37, 117, 252, 0.05) 0%, rgba(106, 17, 203, 0.05) 100%);
-      border-radius: 50%;
-      z-index: 0;
-      animation: float 10s ease-in-out infinite reverse;
-    }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-20px) rotate(5deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-    }
-    
-    /* 交互式卡片效果 */
-    .content-card {
-      transform-style: preserve-3d;
-      perspective: 1000px;
-    }
-    
-    .content-card:hover {
-      transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
-    }
-  }
-  
-  /* 添加引用高亮样式 */
-  .highlight-text {
-    background: linear-gradient(120deg, rgba(106, 17, 203, 0.1) 0%, rgba(37, 117, 252, 0.1) 100%);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-weight: 500;
-  }
-  
-  /* BibTeX 样式美化 */
-  pre {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1.5rem;
-    position: relative;
-    overflow-x: auto;
-  }
-  
-  pre code {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    color: #333;
-  }
-  @media (min-width: 769px) {
-    .content-card {
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    /* ... existing code ... */
-    
-    .desktop-nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(243,244,246,0.95));
-      padding: 0.4rem 0.15rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      display: flex;
-      justify-content: center;
-      backdrop-filter: blur(5px);
-      width: 100%;
-    }
-    
-
-    /* BibTeX styling */
-    .bibtex {
-      background: #f5f7fa;
-      border-radius: 8px;
-      padding: 1.5rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      border-left: 4px solid #4285f4;
-    }
-    
-    /* ... existing code ... */
-  }
-  /* ... existing code ... */
-</style>
-
-<style>
-/* Desktop navigation and highlight styles */
-.desktop-nav .nav-link.active {
-  color: #4285f4;
-}
-
-.desktop-nav .nav-link.active:after {
-  width: 100%;
-}
-
-.highlight-text {
-  background: linear-gradient(120deg, rgba(66,133,244,0.2), rgba(219,68,55,0.2), rgba(244,180,0,0.2));
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-style: normal;
-  font-weight: 600;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-/* BibTeX styling */
-.bibtex {
-  background: #f5f7fa;
-  border-radius: 8px;
-  padding: 1.5rem;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  border-left: 4px solid #4285f4;
-}
-
-/* 美化小标题样式 */
-.section-title {
-  position: relative;
-  padding-bottom: 0.8rem;
-  margin-bottom: 2.5rem;
-  font-weight: 600;
-  background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  font-family: 'Google Sans', sans-serif;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  width: auto;
-  text-align: center !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(106, 17, 203, 0.3);
-}
-
-/* 标题悬停效果 */
-.section-title:hover {
-  transform: translateY(-2px);
-}
-
-.section-title:hover::after {
-  width: 120px;
-  box-shadow: 0 2px 8px rgba(106, 17, 203, 0.5);
-}
-
-/* 为每个标题容器添加一致的顶部和底部边距 */
-.hero-body h2.section-title, 
-.column h2.section-title {
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
-}
-
-/* 确保标题容器居中 */
-.has-text-centered {
-  text-align: center !important;
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
-/* 修复标题的wrapper样式 */
-.title-wrapper {
-  text-align: center;
-  width: 100%;
-  display: block;
-  margin-bottom: 1.5rem;
-}
-
-/* 为标题添加微妙的光晕效果 */
-.section-title::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, rgba(106, 17, 203, 0) 70%);
-  border-radius: 50%;
-  z-index: -1;
-}
-
-/* 添加装饰性元素 */
-.section-title .section-title-decoration {
-  display: inline-block;
-  margin: 0 0.4rem;
-  opacity: 0.7;
-  vertical-align: middle;
-  font-size: 0.8em;
-  color: #6a11cb;
-  -webkit-text-fill-color: #6a11cb;
-  font-weight: normal;
-}
-
-/* 为卡片添加更好的视觉分隔 */
-.content-card {
-  margin-top: 1rem;
-  border-top: 3px solid rgba(106, 17, 203, 0.05);
-  padding-top: 1.5rem;
-}
-
-/* 为长标题添加特殊样式，确保它们在小屏幕上显示良好 */
-@media screen and (max-width: 768px) {
-  .section-title {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
-    padding-bottom: 0.6rem;
-  }
-  
-  .section-title::after {
-    width: 60px;
-  }
-  
-  .section-title:hover::after {
-    width: 80px;
-  }
-  
-  .section-title .section-title-decoration {
-    font-size: 0.7em;
-    margin: 0 0.3rem;
-  }
-}
-
-/* 确保标题容器居中 */
-.has-text-centered {
-  text-align: center !important;
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-}
-</style>
-
-<style>
-/* 移除所有自定义视频控件样式配置 */
-</style>
-
-<section class="hero main-header" style="background: linear-gradient(135deg, #f5f7fa 0%, #e8ebef 100%);">
+<section class="hero main-header main-header-bg">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="word-wrap: break-word; hyphens: auto; background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; display: inline-block; padding: 0 1rem;">Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields</h1>
-          <div class="is-size-5 publication-authors" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;">
+          <h1 class="title is-1 publication-title">Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields</h1>
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://shijiezhou-ucla.github.io/">Shijie Zhou*</a><sup>1</sup>,</span>
             <span class="author-block">
@@ -1593,7 +141,7 @@
             </span>
           </div>
 
-          <div class="is-size-5 publication-authors" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 0.5rem;">
+          <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>UCLA,</span>
             <span class="author-block"><sup>2</sup>MIT,</span>
             <span class="author-block"><sup>3</sup>Stanford,</span>
@@ -1601,14 +149,14 @@
             <span class="author-block"><sup>5</sup>DEVCOM ARL</span>
           </div>
           <p class="is-size-6">*Co-first authors</p>
-          <div style="display: flex; justify-content: center; margin: 1.5rem 0;">
-            <div class="publication-venue" style="background-color: rgba(106, 17, 203, 0.1); padding: 0.5rem 1.5rem; border-radius: 5px; box-shadow: 0 2px 10px rgba(106, 17, 203, 0.2); text-align: center;">
+          <div class="flex-center">
+            <div class="publication-venue">
               <span class="venue-icon"><i class="fas fa-award"></i></span>
-              <p class="is-size-5" style="color: #6a11cb; font-weight: 600; margin: 0;">CVPR 2025</p>
+              <p class="is-size-5">CVPR 2025</p>
             </div>
           </div>
           <div class="column has-text-centered">
-            <div class="publication-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+            <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
                 <a href="files/Feature4x.pdf"
@@ -1652,13 +200,13 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="content-card">
-        <div class="video-container" style="position: relative; width: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); margin-bottom: 2.5rem;">
-          <video controls poster="./media/figs/fig1_feature4x.jpg" style="margin: 0 auto; max-width: 100%; width: 100%; height: auto; display: block; border-radius: 12px;">
+        <div class="video-container">
+          <video controls poster="./media/figs/fig1_feature4x.jpg">
             <source src="./media/demo.mp4" type="video/mp4">
             Demo Video
           </video>
         </div>
-        <h2 class="subtitle has-text-centered" style="font-size: 14px; margin-top: 1.5rem; line-height: 1.6;">
+        <h2 class="subtitle has-text-centered video-caption">
           Feature4X: Building 4D Interactive Scenes with Agentic AI from Monocular Videos. By dynamically distilling modelconditioned features and integrating 2D foundation models with LLMs in feedback loops, Feature4X enables multimodal tasks across 2D, 3D, and 4D with high-level language inputs or direct user interactions, including (but not limited to) segmentation, scene editing, and VQA across novel views and all time steps, unlocking new possibilities for 4D agentic AI.
         </h2>
       </div>
@@ -1666,7 +214,7 @@
   </div>
 </section>
 
-<section class="section hero is-light abstract-section" style="padding: 1.5rem 0;">
+<section class="section hero is-light abstract-section abstract-section-padding">
   <span class="section-anchor" id="abstract"></span>
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -1681,7 +229,7 @@
         </div>
         <div class="content-card">
           <div class="content has-text-left">
-            <p style="font-size: 1.05rem; line-height: 1.7; color: #333; margin-bottom: 1.2rem; text-align: left;">
+            <p class="text-section">
               Recent advancements in 2D and multimodal models have achieved remarkable success by leveraging large-scale training on extensive datasets. However, extending these achievements to enable free-form interactions and high-level semantic operations with complex 3D/4D scenes remains challenging. This difficulty stems from the limited availability of large-scale, annotated 3D/4D or multi-view datasets, which are crucial for generalizable vision and language tasks such as open-vocabulary and prompt-based segmentation, language-guided editing, and visual question answering (VQA). In this paper, we introduce <em>Feature4X</em>, a universal framework designed to extend any functionality from 2D vision foundation model into the 4D realm, using only monocular video input, which is widely available from user-generated content. The "X" in Feature4X represents its versatility, enabling any task through adaptable, model-conditioned 4D feature field distillation. At the core of our framework is a dynamic optimization strategy that unifies multiple model capabilities into a single representation. Additionally, to the best of our knowledge, Feature4X is the first method to distill and lift the features of video foundation models (e.g. SAM2, InternVideo2) into an explicit <em>4D feature field</em> using Gaussian Splatting. Our experiments showcase novel view segment anything, geometric and appearance scene editing, and free-form VQA across all time steps, empowered by LLMs in feedback loops. These advancements broaden the scope of agentic AI applications by providing a foundation for scalable, contextually and spatiotemporally aware systems capable of immersive dynamic 4D scene interaction.
             </p>
           </div>
@@ -1717,14 +265,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; line-height: 1.7; font-size: 1.05rem; color: #333; margin-bottom: 1.2rem;">
+        <p class="text-section">
           Given an input monocular video, we infer 2D priors to segment static background (represented by <em>static 3D Gaussians</em> augmented with latent features) and dynamic foreground (represented by <em>dynamic 3D Gaussians</em> guided by Motion Scaffolds, a set of nodes {v<sub>i</sub>} encoding 3D motion trajectories and latent features h<sub>1</sub>). Dynamic Gaussian features and motions are computed via interpolation from their K-nearest scaffold nodes. At each timestep, dynamic Gaussians are warped and fused with static Gaussians. A parallel rasterization generates RGB images and a unified latent feature map, decoded into task-specific features—illustrated here by SAM2, CLIP-LSeg, and InternVideo2 for representative 2D (novel view segmentation), 3D (scene editing), and 4D (spatiotemporal VQA) tasks. Our framework generalizes to any 2D vision foundation model and is trained end-to-end using input RGB frames and customized features from pretrained 2D models. At inference, rendered feature maps from arbitrary views and timesteps are directly fed into task-specific decoders, seamlessly supporting user prompts and LLM interactions to form a unified 4D agentic AI system.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig2_pipeline.jpg"
                   alt="Method Pipeline"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1745,14 +293,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; margin-bottom: 0.75rem;">
+        <p class="text-section">
           For any rendered novel view video, we support: (a) <em>Promptless segmentation</em> (segment everything): when no user prompt is provided, segmentation masks are automatically assigned at the first frame (t=0) and then propagated across all frames. (b) <em>Promptable segmentation</em> (segment anything): the user can segment any object—static or dynamic—at any timestep using a point or box prompt, and the corresponding mask is robustly tracked and propagated through subsequent frames.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig3_sam.png"
                   alt="Segment Anything"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1773,14 +321,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; margin-bottom: 0.75rem;">
+        <p class="text-section">
         We compare segmentation quality and inference speed between (a) the naive RGB-based approach and (b) our feature-based method. Ours achieves comparable segmentation, accurately tracking the object over time, and avoids RGB artifacts (red box region at t=70), while reducing inference time to about 4× speed-up.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig4_sam_compare.png"
                   alt="Baseline Comparison"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1801,14 +349,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; margin-bottom: 0.75rem;">
+        <p class="text-section">
           By lifting CLIP-LSeg features into a 4D feature field, we enable <em>pixel-level semantic segmentation</em> from any view at any timestep. This allows robust 4D scene understanding, even as object appearances change over time—for example, accurately identifying a blooming flower from bud to full bloom across views.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig5_clip_seg_results.jpg"
                   alt="Scene Understanding"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1829,14 +377,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; margin-bottom: 0.75rem;">
+        <p class="text-section">
           Given user prompts, our GPT-powered agent interprets editing intent and autonomously performs scene edits via our 4D CLIP feature field. Examples include both <em>geometric</em> (e.g., "extract" and "delete") and <em>appearance</em> (e.g., "change color") editing in 3D space. While results may not be perfect due to imperfect fine-grained feature alignment and non-optimal editing parameter tuning, the agent adaptively refines parameters and applies edits consistently across views and time—greatly reducing the need for manual tuning—and demonstrates robust, interactive 4D scene manipulation.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig6_editing_results.jpg"
                   alt="Scene Editing"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1857,14 +405,14 @@
         </h2>
       </div>
       <div class="content-card">
-        <p style="text-align: left; margin-bottom: 0.75rem;">
+        <p class="text-section">
           (Left) Our model supports free-form VQA across diverse question types—<em>general</em>, <em>spatial</em>, and <em>temporal</em>—by distilling InternVideo2 features. (Right) At each timestep, we reconstruct both a 4D radiance field and a 4D feature field, providing more inference sources beyond the input video frame—including local (moving camera) and global (zoomed-out) novel views and their corresponding feature maps—thereby supporting VQA in 4D and enhancing the model's spatiotemporal reasoning capabilities.
         </p>
         <div class="img-container">
           <img
                   src="./media/figs/fig7_VQA.jpg"
                   alt="VQA with Chatbot Agent"
-                  style="margin: 0 auto; max-width: 100%; width: auto; height: auto; display: block;"
+                  class="standard-image"
           >
         </div>
       </div>
@@ -1872,19 +420,19 @@
   </div>
 </section>
 
-<section class="section feature-section" id="BibTeX" style="padding: 2rem 1.5rem;">
+<section class="section feature-section feature-section-padding" id="BibTeX">
   <span class="section-anchor" id="bibtex"></span>
   <div class="container is-max-desktop content">
-    <div class="content-card" style="position: relative; padding: 0; overflow: hidden; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); border-radius: 8px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1)); padding: 12px 15px; border-bottom: 1px solid rgba(106, 17, 203, 0.15);">
-        <h3 style="margin: 0; color: #333; font-weight: 600; font-size: 1.2rem;">BibTeX</h3>
-        <button id="copy-bibtex" class="copy-button" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; border-radius: 4px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 5px;">
+    <div class="content-card bibtex-container">
+      <div class="bibtex-header">
+        <h3 class="bibtex-title">BibTeX</h3>
+        <button id="copy-bibtex" class="copy-button">
           <i class="fas fa-copy"></i> Copy
         </button>
       </div>
-      <pre style="margin: 0; padding: 1.5rem; background-color: white;"><code id="bibtex-content">@inproceedings{zhou2025feature4x,
+      <pre class="bibtex-content"><code id="bibtex-content">@inproceedings{zhou2025feature4x,
   title={Feature4X: Bridging Any Monocular Video to 4D Agentic AI with Versatile Gaussian Feature Fields},
-  author={Zhou, Shijie and Ren, Hui and Weng, Yijia and Zhang, Shuwang and Wang, Zhen and Xu, Dejia and Fan, Zhiwen and You, Suya and Wang, Zhangyang and Guibas, Leonidas and Kadambi, Achuta},
+  author={Zhou, Shijie and Ren, Hui and Weng, Yijia and Zhang, Shuwang and Wang, Zhen and Xu, Dejia and Fan, Zhiwen and You, Suya and Wang, Zhangyang and Guibas, Leonidas and Kadambi},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2025}
 }</code></pre>
@@ -1893,31 +441,31 @@
 </section>
 
 
-<footer class="footer" style="background-color: #2c3e50; color: #fff; padding: 2rem 0; margin-top: 3rem;">
+<footer class="footer footer-custom">
   <div class="container">
     <div class="content has-text-centered">
       <div class="columns is-centered">
         <div class="column is-8">
-          <div style="margin-bottom: 1.5rem;">
-            <a class="icon-link" href="" style="font-size: 1.75rem; color: #fff; margin: 0 0.5rem; transition: color 0.3s ease, transform 0.3s ease; display: inline-block;" onmouseover="this.style.color='#6a11cb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.color='#fff'; this.style.transform='translateY(0)'">
+          <div class="footer-icons">
+            <a class="footer-icon-link" href="">
               <i class="fab fa-github"></i>
             </a>
-            <a class="icon-link" href="" style="font-size: 1.75rem; color: #fff; margin: 0 0.5rem; transition: color 0.3s ease, transform 0.3s ease; display: inline-block;" onmouseover="this.style.color='#6a11cb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.color='#fff'; this.style.transform='translateY(0)'">
+            <a class="footer-icon-link" href="">
               <i class="fas fa-globe"></i>
             </a>
-            <a class="icon-link" href="" style="font-size: 1.75rem; color: #fff; margin: 0 0.5rem; transition: color 0.3s ease, transform 0.3s ease; display: inline-block;" onmouseover="this.style.color='#6a11cb'; this.style.transform='translateY(-3px)'" onmouseout="this.style.color='#fff'; this.style.transform='translateY(0)'">
+            <a class="footer-icon-link" href="">
               <i class="fas fa-envelope"></i>
             </a>
           </div>
-          <div class="content" style="color: #bdc3c7;">
-            <p style="margin-bottom: 0.75rem; font-size: clamp(0.8rem, 2vw, 1rem); padding: 0 1rem;">
-              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="color: #3498db; transition: color 0.3s ease;" onmouseover="this.style.color='#6a11cb'" onmouseout="this.style.color='#3498db'">Creative
+          <div class="footer-content">
+            <p class="footer-text">
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="footer-link">Creative
               Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
-            <p style="margin-top: 0.75rem; font-size: clamp(0.7rem, 1.5vw, 0.9rem); margin-bottom: 0.75rem; padding: 0 1rem;">
+            <p class="footer-text-small">
               Website source code based on the Nerfies project page. If you want to reuse their source code, please credit them appropriately.
             </p>
-            <p style="margin-top: 1.5rem; font-size: clamp(0.6rem, 1.2vw, 0.8rem); margin-bottom: 0; padding: 0 1rem;">
+            <p class="footer-text-copyright">
               © 2025 Feature4X Team - All Rights Reserved
             </p>
           </div>
@@ -1928,7 +476,7 @@
 </footer>
 
 <!-- Scroll to top button -->
-<button id="scroll-to-top" title="Go to top" style="padding: 12px; font-size: 16px; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border: none; outline: none; color: white; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
+<button id="scroll-to-top" title="Go to top" class="scroll-top-button">
   <i class="fas fa-chevron-up"></i>
 </button>
 
@@ -1943,571 +491,7 @@
   </div>
 </div>
 
-<script>
-  // Scroll to top functionality
-  window.onscroll = function() {
-    scrollFunction();
-    updateReadingProgress();
-    updateActiveNavLink();
-  };
-  
-  function scrollFunction() {
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-      document.getElementById("scroll-to-top").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("scroll-to-top").style.opacity = "1";
-      }, 50);
-    } else {
-      document.getElementById("scroll-to-top").style.opacity = "0";
-      setTimeout(() => {
-        if (document.body.scrollTop <= 500 && document.documentElement.scrollTop <= 500) {
-          document.getElementById("scroll-to-top").style.display = "none";
-        }
-      }, 300);
-    }
-  }
-  
-  document.getElementById("scroll-to-top").addEventListener("click", function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-  
-  // 添加鼠标悬停效果
-  document.getElementById("scroll-to-top").addEventListener("mouseover", function() {
-    this.style.transform = "translateY(-5px)";
-    this.style.boxShadow = "0 8px 15px rgba(0, 0, 0, 0.3)";
-  });
-  
-  document.getElementById("scroll-to-top").addEventListener("mouseout", function() {
-    this.style.transform = "translateY(0)";
-    this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-  });
-  
-  // 阅读进度更新
-  function updateReadingProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
-    const scrolled = window.scrollY / documentHeight * 100;
-    document.getElementById("reading-progress").style.width = scrolled + "%";
-  }
-  
-  // 更新当前活动导航链接
-  function updateActiveNavLink() {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-    
-    let currentSectionId = "";
-    
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const scrollY = window.scrollY;
-      
-      if (scrollY >= sectionTop - 100 && scrollY < sectionTop + sectionHeight - 100) {
-        const anchor = section.querySelector(".section-anchor");
-        if (anchor) {
-          currentSectionId = anchor.id;
-        }
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      const href = link.getAttribute("href").substring(1); // 去掉#号
-      
-      if (href === currentSectionId) {
-        link.classList.add("active");
-      }
-    });
-  }
-  
-  // Fade in elements on scroll
-  document.addEventListener('DOMContentLoaded', function() {
-    // 移动端导航侧边栏功能
-    const navToggle = document.getElementById('mobile-nav-toggle');
-    const navSidebar = document.getElementById('mobile-nav-sidebar');
-    const navOverlay = document.getElementById('mobile-nav-overlay');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // 打开/关闭侧边栏
-    navToggle.addEventListener('click', function() {
-      navSidebar.classList.toggle('active');
-      navOverlay.classList.toggle('active');
-      
-      // 切换图标
-      const icon = this.querySelector('i');
-      if (navSidebar.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-    
-    // 点击遮罩层关闭侧边栏
-    navOverlay.addEventListener('click', function() {
-      navSidebar.classList.remove('active');
-      navOverlay.classList.remove('active');
-      navToggle.querySelector('i').classList.remove('fa-times');
-      navToggle.querySelector('i').classList.add('fa-bars');
-    });
-    
-    // 点击导航链接后关闭侧边栏
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // 平滑滚动到目标位置
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          const targetPosition = targetElement.offsetTop;
-          window.scrollTo({
-            top: targetPosition - 20,
-            behavior: 'smooth'
-          });
-        }
-        
-        // 关闭侧边栏
-        navSidebar.classList.remove('active');
-        navOverlay.classList.remove('active');
-        navToggle.querySelector('i').classList.remove('fa-times');
-        navToggle.querySelector('i').classList.add('fa-bars');
-      });
-    });
-    
-    const faders = document.querySelectorAll('.content-card');
-    
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px"
-    };
-    
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          return;
-        } else {
-          entry.target.classList.add('appear');
-          appearOnScroll.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    
-    faders.forEach(fader => {
-      fader.classList.add('fade-in');
-      appearOnScroll.observe(fader);
-    });
-    
-    // 添加媒体查询检测
-    function checkMobile() {
-      let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-      if (viewportWidth <= 768) {
-        document.body.classList.add('is-mobile');
-      } else {
-        document.body.classList.remove('is-mobile');
-      }
-    }
-    
-    // 初始检测
-    checkMobile();
-    
-    // 监听窗口大小变化
-    window.addEventListener('resize', checkMobile);
-    
-    // 实现图片懒加载
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          lazyImageObserver.unobserve(img);
-          
-          // 添加加载动画
-          img.style.opacity = '0';
-          img.onload = function() {
-            img.style.transition = 'opacity 0.5s ease';
-            img.style.opacity = '1';
-          };
-        }
-      });
-    });
-    
-    lazyImages.forEach(function(image) {
-      lazyImageObserver.observe(image);
-    });
-    
-    // 为视频添加加载指示器
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-      video.addEventListener('loadstart', function() {
-        this.parentNode.classList.add('loading');
-      });
-      
-      video.addEventListener('canplay', function() {
-        this.parentNode.classList.remove('loading');
-      });
-    });
-    
-    // 初始化阅读进度和活动导航链接
-    updateReadingProgress();
-    updateActiveNavLink();
-
-    // 图片预览功能
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const images = document.querySelectorAll('.img-container img');
-    
-    let currentScale = 1;
-    let startX, startY, moveX, moveY;
-    let translateX = 0, translateY = 0;
-  
-    // 打开预览
-    images.forEach(img => {
-      img.addEventListener('click', function() {
-        lightboxImage.src = this.src;
-        lightboxCaption.textContent = this.alt || '图片预览';
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // 防止背景滚动
-        
-        // 重置缩放和位置
-        resetImagePosition();
-      });
-    });
-    
-    // 关闭预览
-    lightboxClose.addEventListener('click', function() {
-      lightbox.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-    
-    // 点击背景关闭预览
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    });
-    
-    // 双击缩放
-    lightboxImage.addEventListener('dblclick', function(e) {
-      e.preventDefault();
-      
-      if (currentScale === 1) {
-        currentScale = 2;
-      } else {
-        resetImagePosition();
-      }
-      
-      updateImageTransform();
-    });
-    
-    // 触摸事件 - 捏合缩放和拖动
-    lightboxImage.addEventListener('touchstart', function(e) {
-      if (e.touches.length === 2) {
-        // 双指触摸 - 准备缩放
-        const touch1 = e.touches[0];
-        const touch2 = e.touches[1];
-        
-        const distance = Math.hypot(
-          touch2.clientX - touch1.clientX,
-          touch2.clientY - touch1.clientY
-        );
-        
-        this.dataset.initialDistance = distance;
-        this.dataset.initialScale = currentScale;
-      } else if (e.touches.length === 1) {
-        // 单指触摸 - 准备拖动
-        startX = e.touches[0].clientX - translateX;
-        startY = e.touches[0].clientY - translateY;
-      }
-    });
-    
-    lightboxImage.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-      
-      if (e.touches.length === 2) {
-        // 双指移动 - 缩放
-        const touch1 = e.touches[0];
-        const touch2 = e.touches[1];
-        
-        const distance = Math.hypot(
-          touch2.clientX - touch1.clientX,
-          touch2.clientY - touch1.clientY
-        );
-        
-        const initialDistance = parseFloat(this.dataset.initialDistance);
-        const initialScale = parseFloat(this.dataset.initialScale);
-        
-        if (initialDistance && initialScale) {
-          currentScale = initialScale * (distance / initialDistance);
-          currentScale = Math.min(Math.max(1, currentScale), 4); // 限制缩放范围
-          
-          updateImageTransform();
-        }
-      } else if (e.touches.length === 1 && currentScale > 1) {
-        // 单指移动 - 拖动（仅在放大状态下）
-        moveX = e.touches[0].clientX - startX;
-        moveY = e.touches[0].clientY - startY;
-        
-        // 限制拖动范围
-        const maxX = (currentScale - 1) * lightboxImage.width / 2;
-        const maxY = (currentScale - 1) * lightboxImage.height / 2;
-        
-        translateX = Math.min(Math.max(moveX, -maxX), maxX);
-        translateY = Math.min(Math.max(moveY, -maxY), maxY);
-        
-        updateImageTransform();
-      }
-    });
-    
-    // 重置图片位置和缩放
-    function resetImagePosition() {
-      currentScale = 1;
-      translateX = 0;
-      translateY = 0;
-    }
-    
-    // 更新图片变换
-    function updateImageTransform() {
-      lightboxImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
-    }
-    
-    // 初始化阅读进度和活动导航链接
-    updateReadingProgress();
-    updateActiveNavLink();
-
-    // 给 em 标签添加高亮类
-    document.querySelectorAll('em').forEach(el => {
-      el.classList.add('highlight-text');
-    });
-    
-    // 桌面端导航平滑滚动
-    const desktopNavLinks = document.querySelectorAll('#desktop-nav .nav-link');
-    
-    desktopNavLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          const offset = 80; // 考虑到固定导航的高度
-          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // 初始化激活当前导航项
-    function setActiveNavItem() {
-      desktopNavLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      const scrollPos = window.scrollY + 100;
-      
-      document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.querySelector('.section-anchor')?.id;
-        
-        if(sectionId && scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-          document.querySelector(`#desktop-nav a[href="#${sectionId}"]`)?.classList.add('active');
-        }
-      });
-    }
-    
-    // 页面加载和滚动时更新激活状态
-    setActiveNavItem();
-    window.addEventListener('scroll', setActiveNavItem);
-    
-    // 复制BibTeX功能
-    const copyBibtexBtn = document.getElementById('copy-bibtex');
-    if (copyBibtexBtn) {
-      copyBibtexBtn.addEventListener('click', function() {
-        const bibtexContent = document.getElementById('bibtex-content').textContent;
-        navigator.clipboard.writeText(bibtexContent).then(function() {
-          // 变更按钮文本
-          const originalText = copyBibtexBtn.innerHTML;
-          copyBibtexBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-          
-          // 添加效果
-          copyBibtexBtn.style.background = "linear-gradient(135deg, #00b09b, #96c93d)";
-          
-          // 2秒后恢复原样
-          setTimeout(function() {
-            copyBibtexBtn.innerHTML = originalText;
-            copyBibtexBtn.style.background = "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)";
-          }, 2000);
-        }).catch(function(err) {
-          console.error('Could not copy text: ', err);
-          // 复制失败
-          copyBibtexBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
-          copyBibtexBtn.style.background = "linear-gradient(135deg, #ff416c, #ff4b2b)";
-          
-          // 2秒后恢复原样
-          setTimeout(function() {
-            copyBibtexBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-            copyBibtexBtn.style.background = "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)";
-          }, 2000);
-        });
-      });
-      
-      // 给复制按钮添加悬停效果
-      copyBibtexBtn.addEventListener('mouseover', function() {
-        this.style.transform = "translateY(-2px)";
-        this.style.boxShadow = "0 4px 10px rgba(106, 17, 203, 0.3)";
-      });
-      
-      copyBibtexBtn.addEventListener('mouseout', function() {
-        this.style.transform = "translateY(0)";
-        this.style.boxShadow = "none";
-      });
-    }
-  });
-  
-  // 添加鼠标悬停效果
-  document.getElementById("scroll-to-top").addEventListener("mouseout", function() {
-    this.style.transform = "translateY(0)";
-    this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-  });
-  
-  // 阅读进度更新
-  function updateReadingProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
-    const scrolled = window.scrollY / documentHeight * 100;
-    document.getElementById("reading-progress").style.width = scrolled + "%";
-  }
-</script>
-
-<script>
-  function toggleSliders() {
-    // Get both slider containers
-    var slider1 = document.getElementById("slider1-container_teaser");
-    var slider2 = document.getElementById("slider2-container_teaser");
-    var slider3 = document.getElementById("slider3-container_teaser");
-
-    // Toggle visibility
-    // if (slider1.style.display === "none") {
-    //   slider1.style.display = "block";
-    //   slider2.style.display = "none";
-    // } else {
-    //   slider1.style.display = "none";
-    //   slider2.style.display = "block";
-    // }
-    if (slider1.style.display === "block") {
-      slider1.style.display = "none";
-      slider2.style.display = "block";
-    } else if (slider2.style.display === "block") {
-      slider2.style.display = "none";
-      slider3.style.display = "block";
-    } else {
-      slider3.style.display = "none";
-      slider1.style.display = "block";
-    }
-
-
-  }
-</script>
-
-<script>
-  const promptSelect = document.getElementById('promptSelect');
-  // const editButton = document.getElementById('editButton');
-  // const resultVideo = document.getElementById('resultVideo');
-
-  // Set the default video path
-  // const videoPath = 'data/video.mp4';
-
-  // Mock logic for editing the video based on prompt
-  function getResultVideoUrl(prompt) {
-    // Simulate result video based on selected prompt
-    if (prompt === 'delete_dog') {
-      return 'media/supplement_videos/italian_pup/language_editing/geometric_deletion_local.mp4'; // Replace with actual path to the video with the dog deleted
-    } else if (prompt === 'change_color') {
-      return 'media/supplement_videos/italian_pup/language_editing/appearance_clifford_local.mp4'; // Replace with actual path to the video with dog's color changed
-    } else if (prompt === 'extract_dog') {
-      return 'media/supplement_videos/italian_pup/language_editing/geometric_extraction_local.mp4'; // Replace with actual path to the video with dog's color changed
-    }
-
-    return null;
-  }
-
-  // Enable/Disable the edit button based on prompt selection
-  promptSelect.addEventListener('change', () => {
-    const prompt = promptSelect.value;
-    const videoUrl = getResultVideoUrl(prompt);
-    if (videoUrl) {
-      resultVideo.src = videoUrl;
-      resultVideo.style.display = 'block';
-    } else {
-      alert('Sorry, no matching edit for this prompt.');
-    }
-  });
-
-
-</script>
-
-<div id="scroll-top-btn" class="scroll-top-btn" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: none; outline: none; background-color: rgba(66, 133, 244, 0.8); color: white; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
-  <i class="fas fa-chevron-up" style="line-height: 50px; font-size: 20px;"></i>
-</div>
-
-<script>
-  // 滚动到顶部按钮
-  const scrollTopBtn = document.getElementById("scroll-top-btn");
-  
-  window.onscroll = function() {
-    scrollFunction();
-    updateReadingProgress();
-    updateActiveNavLink();
-  };
-  
-  function scrollFunction() {
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-      document.getElementById("scroll-to-top").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("scroll-to-top").style.opacity = "1";
-      }, 50);
-    } else {
-      document.getElementById("scroll-to-top").style.opacity = "0";
-      setTimeout(() => {
-        if (document.body.scrollTop <= 500 && document.documentElement.scrollTop <= 500) {
-          document.getElementById("scroll-to-top").style.display = "none";
-        }
-      }, 300);
-    }
-  }
-  
-  document.getElementById("scroll-to-top").addEventListener("click", function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-  
-  // 添加鼠标悬停效果
-  document.getElementById("scroll-to-top").addEventListener("mouseover", function() {
-    this.style.transform = "translateY(-5px)";
-    this.style.boxShadow = "0 8px 15px rgba(0, 0, 0, 0.3)";
-  });
-  
-  document.getElementById("scroll-to-top").addEventListener("mouseout", function() {
-    this.style.transform = "translateY(0)";
-    this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-  });
-  
-  </script>
 </body>
 </html>
+
+
