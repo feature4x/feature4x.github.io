@@ -3,6 +3,82 @@
  * Contains component-specific styles extracted from inline HTML
  */
 
+/* CSS变量用于主题切换 */
+:root {
+  /* 浅色模式变量 */
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #fff;
+  --bg-tertiary: #f0f4f8;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #666;
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 15px 35px rgba(106, 17, 203, 0.15);
+  --border-color: rgba(106, 17, 203, 0.05);
+  --gradient-bg: linear-gradient(135deg, #f5f7fa 0%, #e8ebef 100%);
+  --bubble-gradient-1: linear-gradient(135deg, rgba(106, 17, 203, 0.05) 0%, rgba(37, 117, 252, 0.05) 100%);
+  --bubble-gradient-2: linear-gradient(135deg, rgba(37, 117, 252, 0.05) 0%, rgba(106, 17, 203, 0.05) 100%);
+  --bubble-gradient-3: linear-gradient(135deg, rgba(106, 17, 203, 0.03) 0%, rgba(37, 117, 252, 0.03) 100%);
+  --code-bg: #f8f9fa;
+  --lightbox-bg: rgba(0, 0, 0, 0.9);
+  --lightbox-text: white;
+}
+
+/* 深色模式变量 */
+[data-theme="dark"] {
+  --bg-primary: #121220;      /* 更暗的背景色 */
+  --bg-secondary: #0c1428;    /* 更暗的卡片背景 */
+  --bg-tertiary: #0a1a30;     /* 更暗的特殊区域背景 */
+  --text-primary: #f0f0f0;    /* 更亮的主文字颜色 */
+  --text-secondary: #d0d0d0;  /* 更亮的次要文字颜色 */
+  --text-muted: #a0a0a0;      /* 更亮的辅助文字颜色 */
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --card-hover-shadow: 0 15px 35px rgba(106, 17, 203, 0.4);
+  --border-color: rgba(106, 17, 203, 0.3);
+  --gradient-bg: linear-gradient(135deg, #0c1428 0%, #121220 100%);
+  --bubble-gradient-1: linear-gradient(135deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+  --bubble-gradient-2: linear-gradient(135deg, rgba(37, 117, 252, 0.15) 0%, rgba(106, 17, 203, 0.15) 100%);
+  --bubble-gradient-3: linear-gradient(135deg, rgba(106, 17, 203, 0.1) 0%, rgba(37, 117, 252, 0.1) 100%);
+  --code-bg: #1a1a1a;
+  --lightbox-bg: rgba(0, 0, 0, 0.98);
+  --lightbox-text: #f0f0f0;
+}
+
+/* 深色模式切换按钮样式 */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle i {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .theme-toggle {
+    top: 75px; /* 在移动设备上，避免与导航菜单按钮重叠 */
+  }
+}
+
 /* Desktop navigation styles */
 @media screen and (min-width: 769px) {
   .desktop-nav {
@@ -140,7 +216,7 @@
 #overview .content-card p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.2rem;
   text-indent: 0;
 }
@@ -179,8 +255,8 @@
 body {
   font-family: 'Noto Sans', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f9f9f9;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -199,6 +275,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 0 1rem;
+  transition: background 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
 }
 
 .hero.teaser {
@@ -218,7 +295,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease-in-out, background 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
   letter-spacing: 0.5px;
   font-family: 'Google Sans', sans-serif;
   padding-left: 0.5rem;
@@ -277,22 +354,22 @@ body {
 }
 
 .content-card {
-  background-color: #fff;
+  background-color: var(--bg-secondary);
   border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   position: relative;
   margin-top: 0.5rem;
-  border-top: 3px solid rgba(106, 17, 203, 0.05);
+  border-top: 3px solid var(--border-color);
   padding-top: 1.5rem;
 }
 
 .content-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(106, 17, 203, 0.15);
+  box-shadow: var(--card-hover-shadow);
 }
 
 @media screen and (min-width: 769px) {
@@ -323,7 +400,7 @@ img, video {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--card-shadow);
 }
 
 .img-container img:hover, .video-container video:hover {
@@ -332,7 +409,7 @@ img, video {
 }
 
 .feature-section {
-  background-color: #f0f4f8;
+  background-color: var(--bg-tertiary);
   border-radius: 10px;
   padding: 2rem;
   margin: 2rem 0;
@@ -381,7 +458,7 @@ img, video {
 /* Image caption styles */
 .img-caption {
   font-size: 14px;
-  color: #555;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
   text-align: center;
   font-style: italic;
@@ -389,7 +466,7 @@ img, video {
 
 /* BibTeX styling */
 .bibtex {
-  background: #f5f7fa;
+  background: var(--bg-tertiary);
   border-radius: 8px;
   padding: 1.5rem;
   font-family: 'Courier New', monospace;
@@ -400,7 +477,7 @@ img, video {
 }
 
 pre {
-  background: #f8f9fa;
+  background: var(--code-bg);
   border-radius: 8px;
   padding: 1.5rem;
   position: relative;
@@ -410,7 +487,7 @@ pre {
 pre code {
   font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* Mobile-specific styles */
@@ -667,7 +744,7 @@ pre code {
 
 /* Main header special styles */
 .hero.main-header {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ebef 100%);
+  background: var(--gradient-bg);
 }
 
 @media screen and (min-width: 769px) {
@@ -683,7 +760,7 @@ pre code {
     right: 10%;
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, rgba(106, 17, 203, 0.05) 0%, rgba(37, 117, 252, 0.05) 100%);
+    background: var(--bubble-gradient-1);
     border-radius: 50%;
     z-index: 0;
     animation: float 15s ease-in-out infinite;
@@ -696,7 +773,7 @@ pre code {
     left: 15%;
     width: 200px;
     height: 200px;
-    background: linear-gradient(135deg, rgba(37, 117, 252, 0.05) 0%, rgba(106, 17, 203, 0.05) 100%);
+    background: var(--bubble-gradient-2);
     border-radius: 50%;
     z-index: 0;
     animation: float 10s ease-in-out infinite reverse;
@@ -790,12 +867,12 @@ pre code {
   font-size: 14px;
   margin-top: 1.5rem;
   line-height: 1.6;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 /* Additional styles for replacing inline styles */
 .main-header-bg {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ebef 100%);
+  background: var(--gradient-bg);
   position: relative;
   overflow: hidden;
 }
@@ -808,7 +885,7 @@ pre code {
     right: 10%;
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, rgba(106, 17, 203, 0.05) 0%, rgba(37, 117, 252, 0.05) 100%);
+    background: var(--bubble-gradient-1);
     border-radius: 50%;
     z-index: 0;
     animation: float 15s ease-in-out infinite;
@@ -821,7 +898,7 @@ pre code {
     left: 15%;
     width: 200px;
     height: 200px;
-    background: linear-gradient(135deg, rgba(37, 117, 252, 0.05) 0%, rgba(106, 17, 203, 0.05) 100%);
+    background: var(--bubble-gradient-2);
     border-radius: 50%;
     z-index: 0;
     animation: float 10s ease-in-out infinite reverse;
@@ -835,7 +912,7 @@ pre code {
     left: 25%;
     width: 150px;
     height: 150px;
-    background: linear-gradient(135deg, rgba(106, 17, 203, 0.03) 0%, rgba(37, 117, 252, 0.03) 100%);
+    background: var(--bubble-gradient-3);
     border-radius: 50%;
     z-index: 0;
     animation: float 12s ease-in-out infinite;
@@ -855,7 +932,7 @@ pre code {
 .text-paragraph {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.2rem;
   text-align: left;
 }
@@ -863,6 +940,7 @@ pre code {
 .text-section {
   text-align: left;
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .standard-image {
@@ -889,14 +967,14 @@ pre code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+  background: linear-gradient(to right, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
   padding: 12px 15px;
-  border-bottom: 1px solid rgba(106, 17, 203, 0.15);
+  border-bottom: 1px solid rgba(106, 17, 203, 0.3);
 }
 
 .bibtex-title {
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -919,7 +997,8 @@ pre code {
 .bibtex-content {
   margin: 0;
   padding: 1.5rem;
-  background-color: white;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .footer-custom {
@@ -1013,4 +1092,268 @@ pre code {
 .scroll-top-button-hover {
   transform: translateY(-5px) !important;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 主题切换过渡效果 */
+.theme-transition,
+.theme-transition *,
+[data-theme] *,
+[data-theme] {
+  transition: background 0.5s ease, 
+              background-color 0.5s ease, 
+              color 0.5s ease, 
+              border-color 0.5s ease, 
+              box-shadow 0.5s ease,
+              text-shadow 0.5s ease,
+              opacity 0.5s ease,
+              transform 0.5s ease,
+              filter 0.5s ease !important;
+}
+
+/* 深色模式特定样式调整 */
+[data-theme="dark"] .publication-title {
+  background: linear-gradient(90deg, #8a31eb 0%, #45a5fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
+}
+
+[data-theme="dark"] .section-title {
+  background: linear-gradient(120deg, #8a31eb 0%, #45a5fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(106, 17, 203, 0.4);
+}
+
+[data-theme="dark"] .highlight-text {
+  background: linear-gradient(120deg, rgba(106, 17, 203, 0.2) 0%, rgba(37, 117, 252, 0.2) 100%);
+}
+
+[data-theme="dark"] img, 
+[data-theme="dark"] video {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  filter: brightness(0.9);
+}
+
+[data-theme="dark"] .desktop-nav {
+  background: linear-gradient(to right, rgba(12, 12, 32, 0.95), rgba(10, 20, 40, 0.95));
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] pre {
+  background-color: #1a1a1a;
+  border-left: 3px solid rgba(106, 17, 203, 0.5);
+}
+
+[data-theme="dark"] code {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .scroll-to-top-button {
+  background: linear-gradient(135deg, #42275a 0%, #2575fc 100%);
+}
+
+[data-theme="dark"] .content-card {
+  border-top: 3px solid rgba(106, 17, 203, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: linear-gradient(135deg, #42275a 0%, #2575fc 100%);
+}
+
+[data-theme="dark"] .reading-progress {
+  background: linear-gradient(to right, #42275a, #2575fc);
+}
+
+[data-theme="dark"] .publication-venue {
+  background-color: rgba(106, 17, 203, 0.2);
+}
+
+[data-theme="dark"] .publication-venue p {
+  color: #a388d6;
+}
+
+[data-theme="dark"] .venue-icon {
+  color: #a388d6;
+}
+
+/* 侧边导航在深色模式下的样式 */
+[data-theme="dark"] .mobile-nav-sidebar {
+  background-color: var(--bg-secondary);
+  border-color: rgba(106, 17, 203, 0.3);
+}
+
+[data-theme="dark"] .mobile-nav-sidebar a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .mobile-nav-sidebar a:hover, 
+[data-theme="dark"] .mobile-nav-sidebar a.active {
+  background-color: rgba(106, 17, 203, 0.2);
+  color: #a388d6;
+}
+
+/* BibTeX复制按钮在深色模式下的样式 */
+[data-theme="dark"] .copy-button {
+  background: linear-gradient(135deg, #42275a 0%, #2575fc 100%);
+}
+
+/* BibTeX复制按钮状态 */
+.copy-button-success {
+  background: linear-gradient(135deg, #00b09b, #96c93d) !important;
+}
+
+.copy-button-error {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
+}
+
+/* 滚动到顶部按钮悬停状态 */
+.scroll-top-button-hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 深色模式下Abstract部分的样式 */
+[data-theme="dark"] .abstract-section {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .abstract-section.is-light {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .abstract-section.hero.is-light {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .abstract-section .content-card {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+}
+
+/* 深色模式下BibTeX部分的样式 */
+[data-theme="dark"] .bibtex-container {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .bibtex-header {
+  background: linear-gradient(to right, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+  border-bottom: 1px solid rgba(106, 17, 203, 0.3);
+}
+
+[data-theme="dark"] .bibtex-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .bibtex-content {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] pre code {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .desktop-nav a {
+  color: #e0e0e0;  /* 更亮的导航文字颜色 */
+}
+
+[data-theme="dark"] .desktop-nav a:hover {
+  color: #a388d6;
+  background-color: rgba(106, 17, 203, 0.15);
+}
+
+[data-theme="dark"] .desktop-nav a.active {
+  color: #a388d6;
+  background-color: rgba(106, 17, 203, 0.2);
+}
+
+[data-theme="dark"] .feature-section {
+  background-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] #scroll-to-top {
+  background: linear-gradient(135deg, #42275a 0%, #2575fc 100%);
+}
+
+[data-theme="dark"] .bibtex-content code {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] code#bibtex-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .mobile-nav-toggle {
+  background: linear-gradient(135deg, #42275a 0%, #2575fc 100%);
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .mobile-nav-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 主题初始化时的过渡 */
+.theme-initializing,
+.theme-initializing * {
+  transition: none !important; /* 防止初始加载时的动画 */
+}
+
+/* 所有作者相关元素禁用过渡动画 */
+.publication-authors *,
+.is-size-6.cofirst {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* 禁用作者之间的逗号的过渡动画 */
+.publication-authors span.author-block:after {
+  color: inherit !important;
+}
+
+/* 确保在主题切换过程中也禁用这些元素的过渡并强制应用颜色 */
+.theme-transition .publication-authors,
+.theme-transition .publication-authors span.author-block,
+.theme-transition .is-size-6.cofirst,
+[data-theme] .publication-authors,
+[data-theme] .publication-authors span.author-block,
+[data-theme] .is-size-6.cofirst {
+  transition: none !important;
+  animation: none !important;
+  /* 强制立即应用样式变化，不使用过渡 */
+  color: var(--text-primary) !important;
+  background: none !important;
+  opacity: 1 !important;
+}
+
+/* 无论在什么状态下，确保链接都显示为蓝色 */
+.publication-authors a,
+.theme-transition .publication-authors a,
+[data-theme] .publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+  transition: color 0.3s ease !important;
+  text-decoration: none !important;
+}
+
+.publication-authors a:hover,
+.theme-transition .publication-authors a:hover,
+[data-theme] .publication-authors a:hover {
+  color: #6a11cb !important;
+  text-decoration: underline !important;
+}
+
+/* 深色模式下链接颜色调整 */
+[data-theme="dark"] .publication-authors a,
+.theme-transition[data-theme="dark"] .publication-authors a {
+  color: hsl(204, 90%, 70%) !important;
+}
+
+[data-theme="dark"] .publication-authors a:hover,
+.theme-transition[data-theme="dark"] .publication-authors a:hover {
+  color: #a388d6 !important;
 } 
